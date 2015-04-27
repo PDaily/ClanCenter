@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creator: MyString
+  game: MyString
+  game_mode: MyString
+
+two:
+  creator: MyString
+  game: MyString
+  game_mode: MyString

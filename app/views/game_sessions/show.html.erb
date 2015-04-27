@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @game_session.creator %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @game_session.game %>
+</p>
+
+<p>
+  <strong>Game mode:</strong>
+  <%= @game_session.game_mode %>
+</p>
+
+<%= link_to 'Edit', edit_game_session_path(@game_session) %> |
+<%= link_to 'Back', game_sessions_path %>
