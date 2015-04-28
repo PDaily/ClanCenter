@@ -7,4 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user = User.create({ email: 'guy@guy.com', password: 'changeme', user_name: 'dinklebot' })
-games = Game.create([{ game_title: 'Minecraft', game_desc: 'Blocks!', game_mode: 'Survival', total_players: 4 }, { game_title: 'Destiny', game_desc: 'Shoot things!', game_mode: 'Patrol', total_players: 3 }])
+games = Game.create([{ title: 'Minecraft', description: 'Blocks!' }, { title: 'Destiny', description: 'Shoot things!' }])
+game_modes = GameMode.create([{title: "Survival", game_id: Game.find_by(title: "Minecraft").id}, {title: "Patrol", game_id: Game.find_by(title: "Destiny").id}])

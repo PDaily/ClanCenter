@@ -7,8 +7,6 @@
     <tr>
       <th>Game title</th>
       <th>Game desc</th>
-      <th>Game mode</th>
-      <th>Total players</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +14,8 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= game.game_title %></td>
-        <td><%= game.game_desc %></td>
-        <td><%= game.game_mode %></td>
-        <td><%= game.total_players %></td>
+        <td><%= game.title %></td>
+        <td><%= game.description %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>

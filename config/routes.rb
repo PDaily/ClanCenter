@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'game_sessions/update_games', as: 'update_games'
+  get 'game_sessions/show'
+  
   resources :game_sessions
 
   get 'home/index'

@@ -11,23 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427172415) do
+ActiveRecord::Schema.define(version: 20150427192312) do
+
+  create_table "game_modes", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "total_players"
+    t.integer  "game_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "game_modes", ["game_id"], name: "index_game_modes_on_game_id"
 
   create_table "game_sessions", force: :cascade do |t|
     t.string   "creator"
     t.string   "game"
     t.string   "game_mode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "game_id"
+    t.integer  "game_mode_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
+  add_index "game_sessions", ["game_id"], name: "index_game_sessions_on_game_id"
+  add_index "game_sessions", ["game_mode_id"], name: "index_game_sessions_on_game_mode_id"
+
   create_table "games", force: :cascade do |t|
-    t.string   "game_title"
-    t.string   "game_desc"
-    t.string   "game_mode"
-    t.integer  "total_players"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
