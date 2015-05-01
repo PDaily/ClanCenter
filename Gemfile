@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'rails_admin'
+gem 'local_time'
 gem 'quiet_assets', group: :development
 
 group :development, :test do
