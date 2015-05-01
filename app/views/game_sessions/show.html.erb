@@ -15,8 +15,28 @@
 <p>
   <strong>Game mode:</strong>
   <% @game_session.game_modes.each do |game_mode| %>
-    <%= game_mode.title %>
+    <%= game_mode.title.titleize %>
   <% end %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @game_session.notes %>
+</p>
+
+<p>
+  <strong>Game Date:</strong>
+  <%= local_date(@game_session.game_date, '%B %e') %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= local_time(@game_session.start_time, '%l:%M%P') %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= local_time(@game_session.end_time, '%l:%M%P') %>
 </p>
 
 <%= link_to 'Edit', edit_game_session_path(@game_session) %> |

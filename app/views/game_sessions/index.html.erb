@@ -8,7 +8,11 @@
       <th>Creator</th>
       <th>Game</th>
       <th>Game mode</th>
-      <th colspan="3"></th>
+      <th>Notes</th>
+      <th>Game Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -25,6 +29,18 @@
           <% game_session.game_modes.each do |game_mode| %>
             <%= game_mode.title %>
           <% end %>
+        </td>
+        <td>
+          <%= game_session.notes %>
+        </td>
+        <td>
+          <%= local_date(game_session.game_date, '%B %e') %>
+        </td>
+        <td>
+          <%= local_time(game_session.start_time, '%l:%M%P') %>
+        </td>
+        <td>
+          <%= local_time(game_session.end_time, '%l:%M%P') %>
         </td>
         <td><%= link_to 'Show', game_session %></td>
         <td><%= link_to 'Edit', edit_game_session_path(game_session) %></td>
