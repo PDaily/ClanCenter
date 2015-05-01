@@ -2,17 +2,21 @@
 
 <p>
   <strong>Creator:</strong>
-  <%= @game_session.creator %>
+  <%= @game_session.user.user_name %>
 </p>
 
 <p>
   <strong>Game:</strong>
-  <%= @game_session.game %>
+  <% @game_session.games.each do |game| %>
+    <%= game.title.titleize %>
+  <% end %>
 </p>
 
 <p>
   <strong>Game mode:</strong>
-  <%= @game_session.game_mode %>
+  <% @game_session.game_modes.each do |game_mode| %>
+    <%= game_mode.title %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_game_session_path(@game_session) %> |

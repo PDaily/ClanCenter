@@ -1,4 +1,4 @@
-<%= form_for :gamesession , url: {action: "create"}, html: {method: "post"} do |f| %>
+<%= form_for(@game_session) do |f| %>
   <% if @game_session.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@game_session.errors.count, "error") %> prohibited this game_session from being saved:</h2>
@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-
-  <%= f.select :game_id, options_for_select(@games.collect { |game|
-    [game.title.titleize, game.id] }, 1), {}, { id: 'games_select' } %>
-  <%= f.select :game_mode_id, options_for_select(@game_modes.collect { |game_mode|
-    [game_mode.title.titleize, game_mode.id] }, 0), {}, { id: 'game_mode_select' } %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.select :game_ids, options_for_select(@games.collect { |game|
+    [game.title.titleize, game.id] }, @current_game ), {}, { id: 'games_select' } %>
+  <%= f.select :game_mode_ids, options_for_select(@game_modes.collect { |game_mode|
+    [game_mode.title.titleize, game_mode.id] }, 0 ), {}, { id: 'game_mode_select' } %>
   <%= f.submit "Go!" %>
 
 <% end %>

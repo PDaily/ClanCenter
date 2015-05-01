@@ -15,9 +15,17 @@
   <tbody>
     <% @game_sessions.each do |game_session| %>
       <tr>
-        <td><%= game_session.creator %></td>
-        <td><%= game_session.game %></td>
-        <td><%= game_session.game_mode %></td>
+        <td><%= game_session.user.user_name %></td>
+        <td>
+          <% game_session.games.each do |game| %>
+            <%= game.title.titleize %>
+          <% end %>
+        </td>
+        <td>
+          <% game_session.game_modes.each do |game_mode| %>
+            <%= game_mode.title %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', game_session %></td>
         <td><%= link_to 'Edit', edit_game_session_path(game_session) %></td>
         <td><%= link_to 'Destroy', game_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>

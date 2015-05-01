@@ -3,13 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $(document).on 'change', '#games_select', (evt) ->
-    $.ajax 'update_games',
+    $.ajax '/game_sessions/update_games',
       type: 'GET'
       dataType: 'script'
       data: {
         game_id: $("#games_select option:selected").val()
       }
       error: (jqXHR, textStatus, errorThrown) ->
-        console.log("AJAX Error: #{textStatus}")
-      success: (data, textStatus, jqXHR) ->
-        console.log("Dynamic country select OK!")
+        console.log("Error: #{textStatus}")

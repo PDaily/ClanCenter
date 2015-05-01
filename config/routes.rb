@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'game_sessions/update_games', as: 'update_games'
   get 'game_sessions/show'
   

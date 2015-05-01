@@ -38,4 +38,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # Better errors
+  config.consider_all_requests_local = true
+  BetterErrors::Middleware.allow_ip! '172.17.42.1'
 end

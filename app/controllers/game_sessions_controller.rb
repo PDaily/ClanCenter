@@ -10,7 +10,6 @@ class GameSessionsController < ApplicationController
   # GET /game_sessions/1
   # GET /game_sessions/1.json
   def show
-    #@game_session = GameSession.find_by("id = ?", params[:gamesession][:game_id])
   end
 
   # GET /game_sessions/new
@@ -23,6 +22,12 @@ class GameSessionsController < ApplicationController
 
   # GET /game_sessions/1/edit
   def edit
+    @games = Game.all
+    @game_session = GameSession.find(params[:id])
+    @game_modes = GameMode.where("game_id = ?", Game.first.id)
+    @user = current_user
+    @current_game_mode = GameSession.find(@game_session.id).game_modes.first.id
+    @current_game = GameSession.find(@game_session.id).games.first.id
   end
 
   # POST /game_sessions
@@ -80,6 +85,6 @@ class GameSessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_session_params
-      params.require(:gamesession).permit(:creator, :game_id, :game_mode_id)
+      params.require(:game_session).permit(:user_id, :game_ids, :game_mode_ids)
     end
 end

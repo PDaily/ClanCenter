@@ -3,10 +3,10 @@ class CreateGameModes < ActiveRecord::Migration
     create_table :game_modes do |t|
       t.string :title
       t.integer :total_players
-      t.references :game, index: true
+      t.belongs_to :game, index: true
+      t.belongs_to :game_session, index: true
 
       t.timestamps null: false
     end
-    add_foreign_key :game_modes, :games
   end
 end

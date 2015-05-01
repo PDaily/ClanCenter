@@ -11,37 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427192312) do
+ActiveRecord::Schema.define(version: 20150430214033) do
 
   create_table "game_modes", force: :cascade do |t|
     t.string   "title"
     t.integer  "total_players"
     t.integer  "game_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "game_session_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "game_modes", ["game_id"], name: "index_game_modes_on_game_id"
+  add_index "game_modes", ["game_session_id"], name: "index_game_modes_on_game_session_id"
 
-  create_table "game_sessions", force: :cascade do |t|
-    t.string   "creator"
-    t.string   "game"
-    t.string   "game_mode"
-    t.integer  "game_id"
-    t.integer  "game_mode_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "game_modes_games", id: false, force: :cascade do |t|
+    t.integer "game_mode_id"
+    t.integer "game_id"
   end
 
-  add_index "game_sessions", ["game_id"], name: "index_game_sessions_on_game_id"
-  add_index "game_sessions", ["game_mode_id"], name: "index_game_sessions_on_game_mode_id"
+  add_index "game_modes_games", ["game_id"], name: "index_game_modes_games_on_game_id"
+  add_index "game_modes_games", ["game_mode_id"], name: "index_game_modes_games_on_game_mode_id"
+
+  create_table "game_modes_sessions", id: false, force: :cascade do |t|
+    t.integer "game_session_id"
+    t.integer "game_mode_id"
+  end
+
+  add_index "game_modes_sessions", ["game_mode_id"], name: "index_game_modes_sessions_on_game_mode_id"
+  add_index "game_modes_sessions", ["game_session_id"], name: "index_game_modes_sessions_on_game_session_id"
+
+  create_table "game_sessions", force: :cascade do |t|
+    t.string   "notes"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "game_sessions", ["user_id"], name: "index_game_sessions_on_user_id"
+
+  create_table "game_sessions_games", id: false, force: :cascade do |t|
+    t.integer "game_session_id"
+    t.integer "game_id"
+  end
+
+  add_index "game_sessions_games", ["game_id"], name: "index_game_sessions_games_on_game_id"
+  add_index "game_sessions_games", ["game_session_id"], name: "index_game_sessions_games_on_game_session_id"
 
   create_table "games", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "game_session_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
+
+  add_index "games", ["game_session_id"], name: "index_games_on_game_session_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"

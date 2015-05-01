@@ -8,4 +8,4 @@
 
 user = User.create({ email: 'guy@guy.com', password: 'changeme', user_name: 'dinklebot' })
 games = Game.create([{ title: 'Minecraft', description: 'Blocks!' }, { title: 'Destiny', description: 'Shoot things!' }])
-game_modes = GameMode.create([{title: "Survival", game_id: Game.find_by(title: "Minecraft").id}, {title: "Patrol", game_id: Game.find_by(title: "Destiny").id}])
+game_modes = GameMode.create([{title: "Survival", game_id: Game.find_by(title: "Minecraft").id, total_players: 8}, {title: "Patrol", game_id: Game.find_by(title: "Destiny").id, total_players: 3}])
