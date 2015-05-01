@@ -1,4 +1,4 @@
-class CreateGameSessionsAndGameModes < ActiveRecord::Migration
+class CreateGameModesSessions < ActiveRecord::Migration
   def change
     create_table :game_modes_sessions, id: false do |t|
       t.belongs_to :game_session, index: true
