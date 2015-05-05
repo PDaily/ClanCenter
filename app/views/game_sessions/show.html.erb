@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="players-list">
-  <strong>Players:</strong>
+  <strong>Players:  <%= @total_players %>/<%= @max_players %></strong>
   <ul>
     <% @game_session.users.each do |user| %>
     <li>
@@ -46,6 +46,7 @@
 <% else %>
   <%= button_to 'Join', join_game_path(@game_session) , action: "join_game" %>
 <% end %>
-
-<%= link_to 'Edit', edit_game_session_path(@game_session) %> |
+<% if @game_session.users.first.id == current_user.id %>
+  <%= link_to 'Edit', edit_game_session_path(@game_session) %>
+<% end %>
 <%= link_to 'Back', game_sessions_path %>

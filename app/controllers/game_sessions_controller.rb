@@ -10,6 +10,9 @@ class GameSessionsController < ApplicationController
   # GET /game_sessions/1
   # GET /game_sessions/1.json
   def show
+    set_game_session
+    @total_players = @game_session.users.count
+    @max_players = @game_session.game_mode.total_players
   end
 
   # GET /game_sessions/new
