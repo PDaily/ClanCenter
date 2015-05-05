@@ -40,11 +40,13 @@ class GameSessionsController < ApplicationController
       if @game_session.save
         format.html { redirect_to @game_session, notice: 'Game session was successfully created.' }
         format.json { render :show, status: :created, location: @game_session }
+        @game_session.users << current_user
+        @user = current_user
+        GameSessionMailer.new_game_session_email(@game_session, @user).deliver_now
       else
         format.html { render :new }
         format.json { render json: @game_session.errors, status: :unprocessable_entity }
       end
-      @game_session.users << current_user
     end
   end
 
