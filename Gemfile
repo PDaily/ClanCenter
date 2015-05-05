@@ -37,6 +37,7 @@ gem 'rails_admin'
 gem 'local_time'
 gem 'quiet_assets', group: :development
 gem 'bullet', group: :development
+gem 'letter_opener', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
