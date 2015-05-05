@@ -1,4 +1,4 @@
 class GameMode < ActiveRecord::Base
-  has_and_belongs_to_many :games
-  has_and_belongs_to_many :game_session
+  has_many :game_sessions
+  belongs_to :game
 end

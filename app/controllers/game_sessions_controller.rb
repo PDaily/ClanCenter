@@ -25,9 +25,8 @@ class GameSessionsController < ApplicationController
     @games = Game.all
     @game_session = GameSession.find(params[:id])
     @game_modes = GameMode.where("game_id = ?", Game.first.id)
-    @user = current_user
-    @current_game_mode = GameSession.find(@game_session.id).game_modes.first.id
-    @current_game = GameSession.find(@game_session.id).games.first.id
+    #@current_game_mode = GameSession.find(@game_session.id).game_modes.first.id
+    #@current_game = GameSession.find(@game_session.id).games.first.id
   end
 
   # POST /game_sessions
@@ -43,6 +42,7 @@ class GameSessionsController < ApplicationController
         format.html { render :new }
         format.json { render json: @game_session.errors, status: :unprocessable_entity }
       end
+      @game_session.users << current_user
     end
   end
 
@@ -76,6 +76,22 @@ class GameSessionsController < ApplicationController
       format.js
     end
   end
+  
+  def join_game
+    set_game_session
+    @game_session.users << current_user
+    respond_to do |format|
+      format.html { redirect_to @game_session, notice: "Successfully joined game session!"}
+    end
+  end
+  
+  def leave_game
+    set_game_session
+    @game_session.users.delete(current_user)
+    respond_to do |format|
+      format.html { redirect_to game_sessions_url, notice: "Successfully quit game session!"}
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -84,7 +100,7 @@ class GameSessionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def game_session_params
-      params.require(:game_session).permit(:user_id, :notes, :game_date, :start_time, :end_time, :game_ids, :game_mode_ids)
+  def game_session_params
+    params.require(:game_session).permit(:users, :notes, :game_date, :start_time, :end_time, :game_id, :game_mode_id)
     end
 end

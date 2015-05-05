@@ -1,22 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Creator:</strong>
-  <%= @game_session.user.user_name %>
-</p>
+<div class="players-list">
+  <strong>Players:</strong>
+  <ul>
+    <% @game_session.users.each do |user| %>
+    <li>
+      <%= user.user_name %>
+    </li>
+    <% end %>
+  </ul>
+</div>
 
 <p>
   <strong>Game:</strong>
-  <% @game_session.games.each do |game| %>
-    <%= game.title.titleize %>
-  <% end %>
+  <%= @game_session.game.title.titleize %>
 </p>
 
 <p>
   <strong>Game mode:</strong>
-  <% @game_session.game_modes.each do |game_mode| %>
-    <%= game_mode.title.titleize %>
-  <% end %>
+  <%= @game_session.game_mode.title.titleize %>
 </p>
 
 <p>
@@ -38,6 +40,12 @@
   <strong>End Time:</strong>
   <%= local_time(@game_session.end_time, '%l:%M%P') %>
 </p>
+
+<% if @game_session.users.ids.include?(current_user.id)  %>
+  <%= button_to 'Leave', leave_game_path(@game_session), action: "leave_game" %>
+<% else %>
+  <%= button_to 'Join', join_game_path(@game_session) , action: "join_game" %>
+<% end %>
 
 <%= link_to 'Edit', edit_game_session_path(@game_session) %> |
 <%= link_to 'Back', game_sessions_path %>

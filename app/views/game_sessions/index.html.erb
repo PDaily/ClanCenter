@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Creator</th>
+      <th>Players</th>
       <th>Game</th>
       <th>Game mode</th>
       <th>Notes</th>
@@ -19,16 +19,16 @@
   <tbody>
     <% @game_sessions.each do |game_session| %>
       <tr>
-        <td><%= game_session.user.user_name %></td>
         <td>
-          <% game_session.games.each do |game| %>
-            <%= game.title.titleize %>
+          <% game_session.users.each do |user| %>
+            <%= user.user_name %>
           <% end %>
         </td>
         <td>
-          <% game_session.game_modes.each do |game_mode| %>
-            <%= game_mode.title %>
-          <% end %>
+          <%= game_session.game.title.titleize %>
+        </td>
+        <td>
+          <%= game_session.game_mode.title %>
         </td>
         <td>
           <%= game_session.notes %>
@@ -42,9 +42,15 @@
         <td>
           <%= local_time(game_session.end_time, '%l:%M%P') %>
         </td>
+        <td>
+          <% if game_session.users.ids.include?(current_user.id)  %>
+            <%= button_to 'Leave', leave_game_path(game_session), action: "leave_game" %>
+          <% else %>
+            <%= button_to 'Join', join_game_path(game_session), action: "join_game" %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', game_session %></td>
         <td><%= link_to 'Edit', edit_game_session_path(game_session) %></td>
-        <td><%= link_to 'Destroy', game_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

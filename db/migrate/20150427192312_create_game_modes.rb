@@ -4,7 +4,6 @@ class CreateGameModes < ActiveRecord::Migration
       t.string :title
       t.integer :total_players
       t.belongs_to :game, index: true
-      t.belongs_to :game_session, index: true
 
       t.timestamps null: false
     end

@@ -11,14 +11,15 @@
     </div>
   <% end %>
 
-    <%= f.hidden_field :user_id, :value => @user.id %>
+
+
   <div class="field">
     <%= f.label :notes %><br>
     <%= f.text_field :notes %>
   </div>
 
   <div class="field">
-    <%= f.label :game_date%><br>
+    <%= f.label :game_date %><br>
     <%= f.date_field :game_date %>
   </div>
 
@@ -34,14 +35,14 @@
 
   <div class="field">
     <%= f.label :game %><br>
-    <%= f.select :game_ids, options_for_select(@games.collect { |game|
-      [game.title.titleize, game.id] }, @current_game ), {}, { id: 'games_select' } %>
+      <%= f.select :game_id, options_for_select(@games.collect { |game|
+        [game.title.titleize, game.id] }, @current_game ), {}, { id: 'games_select' } %>
   </div>
 
   <div class="field">
     <%= f.label :game_mode %><br>
-    <%= f.select :game_mode_ids, options_for_select(@game_modes.collect { |game_mode|
-      [game_mode.title.titleize, game_mode.id] }, 0 ), {}, { id: 'game_mode_select' } %>
+      <%= f.select :game_mode_id, options_for_select(@game_modes.collect { |game_mode|
+        [game_mode.title.titleize, game_mode.id] }, 0 ), {}, { id: 'game_mode_select' } %>
   </div>
 
   <div class="action">
