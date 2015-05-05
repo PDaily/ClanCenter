@@ -46,7 +46,7 @@
 <% else %>
   <%= button_to 'Join', join_game_path(@game_session) , action: "join_game" %>
 <% end %>
-<% if @game_session.users.first.id == current_user.id %>
+<% if @game_session.users.last.id == current_user.id %>
   <%= link_to 'Edit', edit_game_session_path(@game_session) %>
 <% end %>
 <%= link_to 'Back', game_sessions_path %>

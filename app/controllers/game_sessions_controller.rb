@@ -4,7 +4,7 @@ class GameSessionsController < ApplicationController
   # GET /game_sessions
   # GET /game_sessions.json
   def index
-    @game_sessions = GameSession.all
+    @game_sessions = GameSession.includes(:users, :game, :game_mode)
   end
 
   # GET /game_sessions/1

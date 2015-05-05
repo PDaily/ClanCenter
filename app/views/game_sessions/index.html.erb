@@ -51,7 +51,7 @@
         </td>
         <td><%= link_to 'Show', game_session %></td>
         <td>
-          <% if game_session.users.first.id == current_user.id %>
+          <% if game_session.users.last.id == current_user.id %>
             <%= link_to 'Edit', edit_game_session_path(game_session) %>
           <% end %>
         </td>
