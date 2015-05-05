@@ -22,11 +22,10 @@ class GameSessionsController < ApplicationController
 
   # GET /game_sessions/1/edit
   def edit
+    set_game_session
     @games = Game.all
-    @game_session = GameSession.find(params[:id])
-    @game_modes = GameMode.where("game_id = ?", Game.first.id)
-    #@current_game_mode = GameSession.find(@game_session.id).game_modes.first.id
-    #@current_game = GameSession.find(@game_session.id).games.first.id
+    @game_modes = @game_session.game.game_modes
+    @current_game = @game_session.game.id
   end
 
   # POST /game_sessions
