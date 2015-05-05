@@ -42,4 +42,9 @@ Rails.application.configure do
   # Better errors
   config.consider_all_requests_local = true
   BetterErrors::Middleware.allow_ip! '172.17.42.1'
+  
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.console = true
+  end
 end
