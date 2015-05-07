@@ -15,34 +15,34 @@
 
   <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_field :notes %>
+    <%= f.text_field :notes, :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :game_date %><br>
-    <%= f.date_field :game_date %>
+    <%= f.date_field :game_date, required: true, value: Time.now.strftime('%Y-%m-%d') %>
   </div>
 
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.time_field :start_time %>
+    <%= f.time_select :start_time, ampm: true, default: @current_time %>
   </div>
 
   <div class="field">
     <%= f.label :end_time %><br>
-    <%= f.time_field :end_time %>
+    <%= f.time_select :end_time, ampm: true, default: @current_time+1.hour  %>
   </div>
 
   <div class="field">
     <%= f.label :game %><br>
       <%= f.select :game_id, options_for_select(@games.collect { |game|
-        [game.title.titleize, game.id] }, @current_game ), {}, { id: 'games_select' } %>
+        [game.title.titleize, game.id] }, @current_game ), {}, {id: 'games_select'} %>
   </div>
 
   <div class="field">
     <%= f.label :game_mode %><br>
       <%= f.select :game_mode_id, options_for_select(@game_modes.collect { |game_mode|
-        [game_mode.title.titleize, game_mode.id] }, 0 ), {}, { id: 'game_mode_select' } %>
+        [game_mode.title.titleize, game_mode.id] }, 0 ), {}, {id: 'game_mode_select'} %>
   </div>
 
   <div class="action">

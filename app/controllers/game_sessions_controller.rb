@@ -1,6 +1,6 @@
 class GameSessionsController < ApplicationController
-  before_action :set_game_session, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :set_game_session, only: [:show, :edit, :update, :destroy, :join_game, :leave_game]
+  before_action :authenticate_user!, only: [:edit, :new, :create, :update, :destroy]
   # GET /game_sessions
   # GET /game_sessions.json
   def index
@@ -10,7 +10,6 @@ class GameSessionsController < ApplicationController
   # GET /game_sessions/1
   # GET /game_sessions/1.json
   def show
-    set_game_session
     @total_players = @game_session.users.count
     @max_players = @game_session.game_mode.total_players
   end
@@ -21,14 +20,15 @@ class GameSessionsController < ApplicationController
     @game_session = GameSession.new
     @game_modes = GameMode.where("game_id = ?", Game.first.id)
     @user = current_user
+    @current_time = Time.now.in_time_zone(current_user.time_zone)
   end
 
   # GET /game_sessions/1/edit
   def edit
-    set_game_session
     @games = Game.all
     @game_modes = @game_session.game.game_modes
     @current_game = @game_session.game.id
+    @current_time = Time.now.in_time_zone(current_user.time_zone)
   end
 
   # POST /game_sessions
@@ -82,7 +82,6 @@ class GameSessionsController < ApplicationController
   end
   
   def join_game
-    set_game_session
     @game_session.users << current_user
     respond_to do |format|
       format.html { redirect_to @game_session, notice: "Successfully joined game session!"}
@@ -90,10 +89,16 @@ class GameSessionsController < ApplicationController
   end
   
   def leave_game
-    set_game_session
     @game_session.users.delete(current_user)
-    respond_to do |format|
-      format.html { redirect_to game_sessions_url, notice: "Successfully quit game session!"}
+    if @game_session.users.empty?
+      @game_session.destroy
+      respond_to do |format|
+        format.html { redirect_to game_sessions_url, notice: "Successfully quit game session! No more users- game session deleted!" }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to game_sessions_url, notice: "Successfully quit game session!"}
+      end
     end
   end
 

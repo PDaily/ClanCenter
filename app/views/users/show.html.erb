@@ -4,6 +4,22 @@
   <strong>User name:</strong>
   <%= @user.user_name %>
 </p>
+<p>
+  <strong>Time Zone:</strong>
+  <%= @user.time_zone %>
+</p>
+<p>
+  <strong>Xbox GamerTag:</strong>
+  <%= @user.xbox_name %>
+</p>
+<p>
+  <strong>Steam Name:</strong>
+  <%= @user.steam_name %>
+</p>
+<p>
+  <strong>Twitch Handle:</strong>
+  <%= @user.twitch_name %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

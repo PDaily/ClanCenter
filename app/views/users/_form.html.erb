@@ -12,8 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_name %><br>
+    <%= f.label :user_name, "User Name" %><br>
     <%= f.text_field :user_name %>
+  </div>
+  <div class="field">
+    <%= f.label :time_zone, "Time Zone" %><br>
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone %>
+  </div>
+  <div class="field">
+    <%= f.label :xbox_gamertag, "Xbox GamerTag" %>
+    <%= f.text_field :xbox_name %>
+  </div>
+  <div class="field">
+    <%= f.label :steam_name, "Steam Name" %>
+    <%= f.text_field :steam_name %>
+  </div>
+  <div>
+    <%= f.label :twitch_name, "Twitch Handle" %>
+    <%= f.text_field :twitch_name %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503181849) do
+ActiveRecord::Schema.define(version: 20150505211454) do
 
   create_table "game_modes", force: :cascade do |t|
     t.string   "title"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20150503181849) do
     t.integer  "game_mode_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.time     "start_time"
-    t.time     "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.date     "game_date"
   end
 
@@ -66,6 +66,10 @@ ActiveRecord::Schema.define(version: 20150503181849) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "time_zone"
+    t.string   "xbox_name"
+    t.string   "steam_name"
+    t.string   "twitch_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
