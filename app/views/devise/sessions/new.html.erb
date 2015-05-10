@@ -1,0 +1,34 @@
+<div class="ten wide centered column">
+  <div class="ui attached message">
+      <div class="header">
+        Log-in
+      </div>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "ui form attached fluid segment"}) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+  <% end %>
+  <div class="ui bottom attached warning message">
+    <i class="icon help"></i>
+    Don't have an account? <a href="/users/sign_up">Sign Up</a> here instead.
+  </div>
+</div>

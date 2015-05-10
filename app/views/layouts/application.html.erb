@@ -7,8 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  
+  <%= render 'navbar/navbar' %>
+    
+  <main>
+    <div class="ui sixteen column padded grid">
+      <%= yield %>
+    </div>
+  </main>
 
 </body>
 </html>

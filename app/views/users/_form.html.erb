@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, html: {class: "ui form attached fluid segment"} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -20,7 +20,7 @@
     <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone %>
   </div>
   <div class="field">
-    <%= f.label :xbox_gamertag, "Xbox GamerTag" %>
+    <%= f.label :xbox_name, "Xbox GamerTag" %>
     <%= f.text_field :xbox_name %>
   </div>
   <div class="field">

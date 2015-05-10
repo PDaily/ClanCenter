@@ -1,13 +1,7 @@
-<head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
-  <h2><%= @user_name %> has created a new <%= @game_session_title %>: <%= @game_mode_title %> gaming session at <%= @start_time %>!</h2>
-  
-  <p><%= @game_session_notes %></p>
-  
-  <p>Click <%= link_to "here", game_session_url(@game_session) %> to go to the game session!</p>
-  
-  <p>If you decide to join, make sure to visit the game session lobby with the above link 15 minutes before game start and join!</p>
-  
-</body>
+<h2><%= @user_name %> has created a new <%= @game_session_title %>: <%= @game_mode_title %> gaming session at <%= @start_time %>!</h2>
+
+<p><%= @game_session_notes %></p>
+
+<p>Click <%= link_to "here", game_session_url(@game_session) %> to go to the game session!</p>
+
+<p>If you decide to join, make sure to visit the game session lobby with the above link 15 minutes before game start and join!</p>

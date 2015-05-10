@@ -1,0 +1,44 @@
+<h4 class="ng-session">Current Gaming Sessions</h4> <%= link_to raw('Create Gaming Session <i class="add circle icon"></i>'), new_game_session_path, {class: "ng-session ng-button tiny ui primary button"}%>
+
+<div class="ui divider"></div>
+
+<div class="column">
+  <div class="ui cards">
+    <% @game_sessions.each do |game_session| %>
+    <div class="card">
+      <a class="image">
+        <img src="http://i.neoseeker.com/n/8/minecraft_360.jpg">
+      </a>
+      <div class="content">
+        <%= link_to game_session.game.title.titleize + " | " +  game_session.game_mode.title.titleize, game_session, class: "header" %>
+        <div class="meta">
+          <p>Players: <%= game_session.users.count %>/<%= game_session.game_mode.total_players %></p>
+          <ul class="player-list">
+
+            <% game_session.users.each do |user| %>
+
+            <li><%= link_to user.user_name, user_path(user) %></li>
+
+            <% end %>
+
+          </ul>
+        </div>
+        <div class="description">
+          <p><strong>Notes:</strong> <%= game_session.notes%></p>
+
+          <p><strong>Game Date:</strong> <%= local_date(game_session.game_date, '%B %e') %></p>
+
+          <p><strong>Start Time:</strong> <%= local_time(game_session.start_time, '%l:%M%P') %></p>
+
+          <p><strong>End Time:</strong> <%= local_time(game_session.end_time, '%l:%M%P') %></p>
+          <% if user_signed_in? && game_session.users.ids.include?(current_user.id) %>
+          <%= button_to 'Leave Game', leave_game_path(game_session), action: "leave_game", class: "ng-button mini ui primary button" %>
+          <% else %>
+          <%= link_to 'Join Game', join_game_path(game_session), action: "join_game", method: :post, class: "ng-button mini ui primary button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

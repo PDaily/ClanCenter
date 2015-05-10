@@ -1,0 +1,15 @@
+<div class="ui small inverted menu">
+  <a href="/" class="active item">
+    <i class="home icon"></i> Home
+  </a>
+  <div class="right menu">
+    <div class="ui dropdown item">
+      <i class="user icon"></i> User <i class="dropdown icon"></i>
+      <% if current_user.nil? %>
+        <%= render "navbar/guest_bar" %>
+      <% else current_user %>
+        <%= render "navbar/current_user_bar" %>
+      <% end %>
+    </div>
+  </div>
+</div>

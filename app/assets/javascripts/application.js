@@ -12,6 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require semantic_ui/semantic_ui
 //= require turbolinks
 //= require local_time
-//= require_tree .
+//= require home
+//= require users
+//= require game_sessions
+//= require games
+
+$(document).ready(function() {
+  $('.dropdown').dropdown({transition: 'drop'});
+});
