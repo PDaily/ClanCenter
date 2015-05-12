@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510162736) do
+ActiveRecord::Schema.define(version: 20150511012241) do
 
   create_table "game_modes", force: :cascade do |t|
     t.string   "title"
@@ -48,8 +48,12 @@ ActiveRecord::Schema.define(version: 20150510162736) do
   create_table "games", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "game_icon_file_name"
+    t.string   "game_icon_content_type"
+    t.integer  "game_icon_file_size"
+    t.datetime "game_icon_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,6 +75,10 @@ ActiveRecord::Schema.define(version: 20150510162736) do
     t.string   "steam_name"
     t.string   "twitch_name"
     t.boolean  "guest",                  default: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

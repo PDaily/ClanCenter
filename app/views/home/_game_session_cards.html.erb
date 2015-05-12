@@ -6,9 +6,9 @@
   <div class="ui cards">
     <% @game_sessions.each do |game_session| %>
     <div class="card">
-      <a class="image">
-        <img src="http://i.neoseeker.com/n/8/minecraft_360.jpg">
-      </a>
+      <p class="image">
+        <%= image_tag game_session.game.game_icon.url %>
+      </p>
       <div class="content">
         <%= link_to game_session.game.title.titleize + " | " +  game_session.game_mode.title.titleize, game_session, class: "header" %>
         <div class="meta">

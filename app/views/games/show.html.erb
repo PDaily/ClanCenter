@@ -1,14 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Game title:</strong>
-  <%= @game.title %>
-</p>
-
-<p>
-  <strong>Game desc:</strong>
-  <%= @game.description %>
-</p>
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<div class="twelve wide centered column">
+  
+  <div class="four wide column">
+      <div class="ui items">
+      <div class="item">
+        <p class="image">
+          <%= image_tag @game.game_icon.url %>
+        </p>
+        <div class="content">
+          <p class="header"><%= @game.title %></p>
+          <div class="description">
+            <%= @game.description %>
+          </div>
+        </div>
+        <div class="extra">
+          <%= button_to 'Edit', edit_game_path(@game), method: "get", class: "ui yellow button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="seven wide column">
+    <h2>Game Modes</h2>
+    <div class="ui divider"></div>
+  </div>
+</div>

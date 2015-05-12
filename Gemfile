@@ -33,14 +33,29 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+
 gem 'devise-guests'
-gem 'rails_admin'
+
+gem "paperclip", "~> 4.2"
+
 gem 'less-rails-semantic_ui'
+
 gem 'autoprefixer-rails'
+
 gem 'local_time'
-gem 'quiet_assets', group: :development
-gem 'bullet', group: :development
-gem 'letter_opener', group: :development
+
+gem 'rails_admin'
+
+group :development do
+  
+  gem 'quiet_assets'
+  
+  gem 'bullet'
+  
+  gem 'letter_opener'
+  
+end
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,7 +68,6 @@ group :development, :test do
   gem 'spring'
   
   gem 'better_errors'
-  
   
 end
 

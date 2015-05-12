@@ -1,37 +1,65 @@
-<%= form_for @user, html: {class: "ui form attached fluid segment"} do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="ten wide centered column">
+  <div class="ui attached message">
+      <div class="header">
+        Edit Profile
+      </div>
+  </div>
+  <%= form_for @user, html: {class: "ui form attached fluid segment"} do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="required field">
+      <%= f.label :user_name, "User Name" %><br>
+      <%= f.text_field :user_name, required: true %>
+    </div>
+  
+    <div class="image">
+      <%= image_tag @user.avatar.url(:medium) %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :avatar, "Avatar" %>
+      <%= f.file_field :avatar %>
+    </div>
+  
+    <div class="required field">
+      <%= f.label :time_zone, "Time Zone" %><br>
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone, required: true %>
+    </div>
+  
+    <div class="required field">
+      <%= f.label :xbox_name, "Xbox GamerTag" %>
+      <%= f.text_field :xbox_name, required: true %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :steam_name, "Steam Name" %>
+      <%= f.text_field :steam_name %>
+    </div>
+  
+    <div>
+      <%= f.label :twitch_name, "Twitch Handle" %>
+      <%= f.text_field :twitch_name %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  
+  <% end %>
+  <% if @edit_user_page %>
+    <div class="ui bottom attached negative message">
+      <i class="icon ban"></i>
+      Want to close your account? <%= link_to "Click here!", @user, method: :delete, data: { confirm: "Are you sure? This is irreversible!" } %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :user_name, "User Name" %><br>
-    <%= f.text_field :user_name %>
-  </div>
-  <div class="field">
-    <%= f.label :time_zone, "Time Zone" %><br>
-    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone %>
-  </div>
-  <div class="field">
-    <%= f.label :xbox_name, "Xbox GamerTag" %>
-    <%= f.text_field :xbox_name %>
-  </div>
-  <div class="field">
-    <%= f.label :steam_name, "Steam Name" %>
-    <%= f.text_field :steam_name %>
-  </div>
-  <div>
-    <%= f.label :twitch_name, "Twitch Handle" %>
-    <%= f.text_field :twitch_name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

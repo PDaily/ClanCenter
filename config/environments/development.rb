@@ -45,8 +45,13 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   BetterErrors::Middleware.allow_ip! '172.17.42.1'
   
+  # Paperclip for codio
+  Paperclip.options[:command_path] = "/home/codio/.parts/bin/"
+  
   config.after_initialize do
     Bullet.enable = true
     Bullet.console = true
   end
+  
+  config.web_console.whitelisted_ips = '172.17.42.1'
 end
