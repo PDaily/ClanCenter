@@ -46,7 +46,7 @@
         <%= button_to 'Join', join_game_path(@game_session) , action: "join_game", class: "tiny ui primary button" %>
       <% end %>
       <% if user_signed_in? && @game_session.users.last.id == current_user.id %>
-        <%= button_to 'Edit', edit_game_session_path(@game_session), class: "tiny ui green button" %>
+        <%= button_to 'Edit', edit_game_session_path(@game_session), method: :get, class: "tiny ui green button" %>
       <% end %>
       <%= link_to 'Back', root_path %>
       </div>

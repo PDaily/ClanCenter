@@ -27,7 +27,7 @@
         <div class="required field">
           <%= f.label :game_date %><br>
           <div class="five wide field">
-            <%= f.date_field :game_date, class: "datepicker", required: true, value: Time.now.strftime('%-d %b, %Y') %>
+            <%= f.date_field :game_date, class: "datepicker", required: true, value: Time.now.strftime('%Y-%m-%d') %>
           </div>
         </div>
 

@@ -20,6 +20,10 @@
 //= require game_sessions
 //= require games
 
-$(document).ready(function() {
+var ready;
+ready = function() {
   $('.dropdown').dropdown({transition: 'drop'});
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
