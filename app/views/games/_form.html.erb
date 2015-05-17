@@ -33,11 +33,11 @@
 
       <div class="required field">
         <%= f.label :description %><br>
-        <%= f.text_field :description, required: true %>
+        <%= f.text_area :description, required: true %>
       </div>
 
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "Submit", class: "ui right floated green button" %>
       </div>
     <% end %>
 </div>

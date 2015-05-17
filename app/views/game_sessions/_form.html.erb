@@ -1,7 +1,7 @@
-<div class="twelve wide centered column">
+<div class="ten wide centered column">
   <div class="ui attached message">
       <div class="header">
-        Game Session Form
+        Game Session
       </div>
   </div>
     <%= form_for @game_session, html: { class: "ui form attached fluid segment" } do |f| %>
@@ -19,46 +19,46 @@
       <% end %>
   
         <div class="required field">
-          <%= f.label :notes %><br>
+          <%= f.label :notes %>
           <%= f.text_area :notes, :required => true %>
         </div>
 
         
         <div class="required field">
-          <%= f.label :game_date %><br>
-          <div class="five wide field">
-            <%= f.date_field :game_date, class: "datepicker", required: true, value: Time.now.strftime('%Y-%m-%d') %>
+          <%= f.label :game_date %>
+          <div class="four fields">
+            <%= f.date_field :game_date, class: "datepicker two fields", required: true, value: Time.now.strftime('%Y-%m-%d') %>
           </div>
         </div>
 
         <div class="required field">
           <%= f.label :start_time %>
           <div class="two fields">
-            <%= f.time_select :start_time, {ampm: true, time_separator: ""}, class: "two wide field", default: @current_time %>
+            <%= f.time_select :start_time, {ampm: true, time_separator: "", default: @current_time}, class: "ui search selection dropdown" %>
           </div>
         </div>
   
         <div class="required field">
           <%= f.label :end_time %>
           <div class="two fields">
-            <%= f.time_select :end_time, {ampm: true, time_separator: ""}, class: "two wide field", default: @current_time+1.hour  %>
+            <%= f.time_select :end_time, {ampm: true, time_separator: "", default: @current_time+1.hour}, class: "ui search selection  dropdown"  %>
           </div>
         </div>
 
 
-        <div class="required two wide field">
-          <%= f.label :game %><br>
+        <div class="required field">
+          <%= f.label :game %>            
           <%= f.select :game_id, options_for_select(@games.collect { |game|
-                                                     [game.title.titleize, game.id] }, @current_game ), {}, {id: 'games_select'} %>
+                                                     [game.title.titleize, game.id] }, @current_game ), {}, {id: 'games_select', class: ""} %>
         </div>
-
-        <div class="required two wide field">
-          <%= f.label :game_mode %><br>
+         <% #TODO Fix semantic-ui dropdown to properly refresh dropdown text after pulling gamemodes %>
+        <div class="required field">
+          <%= f.label :game_mode_id, "Game Mode" %>
           <%= f.select :game_mode_id, options_for_select(@game_modes.collect { |game_mode|
-                                                     [game_mode.title.titleize, game_mode.id] }, 0 ), {}, {id: 'game_mode_select'} %>
+                                                     [game_mode.title.titleize, game_mode.id] }, @current_game_mode ), {}, {id: 'game_mode_select'} %>
         </div>
 
-      <%= f.submit "Go!", class: "ui green button" %>
+      <%= f.submit "Go!", class: "ui right floated green button" %>
 
    <% end %>
 </div>

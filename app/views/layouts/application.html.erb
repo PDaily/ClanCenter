@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>ClanCenter</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,16 +10,17 @@
 </head>
 <body>
   
+  <%= render 'navbar/side_bar' %>
   <%= render 'navbar/navbar' %>
-    
-  <main>
-    <div class="ui sixteen column padded grid">
+  
+  <div class="pusher">
+    <div class="sixteen column stackable padded ui grid">
       <div class="ui floating message">
         <p id="notice"><%= notice %></p>
       </div>
       <%= yield %>
     </div>
-  </main>
+  </div>  
 
 </body>
 </html>

@@ -1,56 +1,111 @@
 <p id="notice"><%= notice %></p>
 
-<div class="twelve wide column">
-  <div class="ui items">
-    <div class="item">
-    <div class="image">
-      <img src="http://semantic-ui.com/images/wireframe/image.png">
-    </div>
-    <div class="content">
-      <p class="header"><%= @game_session.game.title + " | " + @game_session.game_mode.title %></p>
-      <div class="meta">
-        <span class="players-list">Players:  <%= @total_players %>/<%= @max_players %></span>
-        <ul>
+<div class="twelve wide centered column">
+  
+  <div class="ui segment">
+    
+    <div class="ui items">
+      
+      <div class="item">
+        
+        <div class="image">
+          
+          <%= image_tag @game_session.game.game_icon.url %>
+          
+        </div>
+        
+        <div class="content">
+          
+          <p class="header"><%= @game_session.game.title + " | " + @game_session.game_mode.title %></p>
+          
+          <div class="meta">
+            
+            <span class="players-list">Players:  <%= @total_players %>/<%= @max_players %></span>
+            
+            <div class="ui divided list">
+            
             <% @game_session.users.each do |user| %>
-            <li>
-              <%= user.user_name %>
-            </li>
+            
+            <div class="item">
+              
+              <%= image_tag user.avatar.url, class: "ui avatar image" %>
+              
+              <div class="content">
+                
+                <div class="header"><%= link_to user.user_name, user_path(user) %></div>
+                
+              </div>
+              
+            </div>
+            
             <% end %>
-          </ul>
-      </div>
-      <div class="description">
-        <p>
-          <strong>Notes:</strong>
-          <%= @game_session.notes %>
-        </p>
+            
+          </div>
+            
+          </div>
+          
+          <div class="description">
+            
+            <p>
+              
+              <strong>Notes:</strong>
+              
+              <%= @game_session.notes %>
+              
+            </p>
 
-        <p>
-          <strong>Game Date:</strong>
-          <%= local_date(@game_session.game_date, '%B %e') %>
-        </p>
+            <p>
+              
+              <strong>Game Date:</strong>
+              
+              <%= local_date(@game_session.game_date, '%B %e') %>
+              
+            </p>
 
-        <p>
-          <strong>Start Time:</strong>
-          <%= local_time(@game_session.start_time, '%l:%M%P') %>
-        </p>
+            <p>
+              
+              <strong>Start Time:</strong>
+              
+              <%= local_time(@game_session.start_time, '%l:%M%P') %>
+              
+            </p>
 
-        <p>
-          <strong>End Time:</strong>
-          <%= local_time(@game_session.end_time, '%l:%M%P') %>
-        </p>
+            <p>
+              
+              <strong>End Time:</strong>
+              
+              <%= local_time(@game_session.end_time, '%l:%M%P') %>
+              
+            </p>
+            
+          </div>
+          
+          <div class="extra">
+            
+            <% if user_signed_in? && @game_session.users.ids.include?(current_user.id)  %>
+            
+              <%= button_to 'Leave', leave_game_path(@game_session), action: "leave_game", class: "tiny right floated ui red button" %>
+            
+            <% else %>
+            
+              <%= button_to 'Join', join_game_path(@game_session) , action: "join_game", class: "tiny right floated ui primary button" %>
+            
+            <% end %>
+            
+            <% if user_signed_in? && @game_session.users.last.id == current_user.id %>
+            
+              <%= button_to 'Edit', edit_game_session_path(@game_session), method: :get, class: "tiny right floated ui green button" %>
+            
+            <% end %>
+            
+          </div>
+          
+        </div>
+        
       </div>
-      <div class="extra">
-      <% if user_signed_in? && @game_session.users.ids.include?(current_user.id)  %>
-        <%= button_to 'Leave', leave_game_path(@game_session), action: "leave_game", class: "tiny ui red button" %>
-      <% else %>
-        <%= button_to 'Join', join_game_path(@game_session) , action: "join_game", class: "tiny ui primary button" %>
-      <% end %>
-      <% if user_signed_in? && @game_session.users.last.id == current_user.id %>
-        <%= button_to 'Edit', edit_game_session_path(@game_session), method: :get, class: "tiny ui green button" %>
-      <% end %>
-      <%= link_to 'Back', root_path %>
-      </div>
+      
     </div>
+    
   </div>
-  </div>
+  
 </div>

@@ -1,6 +1,7 @@
 class GameSessionsController < ApplicationController
   before_action :set_game_session, only: [:show, :edit, :update, :destroy, :join_game, :leave_game]
   before_action :authenticate_user!, only: [:edit, :new, :create, :join_game, :update, :destroy]
+  
   # GET /game_sessions
   # GET /game_sessions.json
   def index
@@ -28,6 +29,7 @@ class GameSessionsController < ApplicationController
     @games = Game.all
     @game_modes = @game_session.game.game_modes
     @current_game = @game_session.game.id
+    @current_game_mode = @game_session.game_mode.id
     @current_time = Time.now.in_time_zone(current_user.time_zone)
   end
 

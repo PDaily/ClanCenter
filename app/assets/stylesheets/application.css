@@ -10,22 +10,40 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
  *= require semantic_ui/semantic_ui
  *= require home
  *= require game_sessions
  *= require games
  *= require users
+ *= require_self
  */
-
+body {
+  background: rgba(218,223,225,0.8);
+}
 .ng-session {
   display: inline-block;
 }
 
-.ng-button {
-  float: right;
+.pusher {
+  padding: 2rem 1rem 0rem 1rem;
+  height: 100%;
 }
 
 .sign-up-btn {
   color: #FFFFFF;
+}
+
+h4.ui.inverted.header {
+  text-align: center;
+}
+
+i.footer-heart.heart.icon {
+  display: inline;
+}
+
+.ui.inverted.vertical.segment.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

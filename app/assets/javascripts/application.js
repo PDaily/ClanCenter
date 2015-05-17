@@ -23,6 +23,9 @@
 var ready;
 ready = function() {
   $('.dropdown').dropdown({transition: 'drop'});
+  $('#main-menu').on('click', function () {
+    $('#side-menu').sidebar('toggle');
+  });
 };
 
 $(document).ready(ready);

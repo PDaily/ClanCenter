@@ -55,6 +55,9 @@ group :development do
   
   gem 'letter_opener'
   
+  gem 'rack-mini-profiler'
+  
+  gem 'flamegraph'
 end
 
 

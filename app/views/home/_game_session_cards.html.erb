@@ -1,11 +1,10 @@
-<h4 class="ng-session">Current Gaming Sessions</h4> <%= link_to raw('Create Gaming Session <i class="add circle icon"></i>'), new_game_session_path, {class: "ng-session ng-button tiny ui primary button"}%>
+<h2 class="ng-session ui header">Current Gaming Sessions</h2> <%= link_to raw('Create Gaming Session <i class="add circle icon"></i>'), new_game_session_path, {class: "ng-session ng-button tiny ui primary button"}%>
 
-<div class="ui divider"></div>
+  <div class="ui divider"></div>
 
-<div class="column">
   <div class="ui cards">
     <% @game_sessions.each do |game_session| %>
-    <div class="card">
+    <div class="ui card">
       <p class="image">
         <%= image_tag game_session.game.game_icon.url %>
       </p>
@@ -13,16 +12,31 @@
         <%= link_to game_session.game.title.titleize + " | " +  game_session.game_mode.title.titleize, game_session, class: "header" %>
         <div class="meta">
           <p>Players: <%= game_session.users.count %>/<%= game_session.game_mode.total_players %></p>
-          <ul class="player-list">
-
+          
+          <div class="ui divided list">
+            
             <% game_session.users.each do |user| %>
-
-            <li><%= link_to user.user_name, user_path(user) %></li>
-
+            
+            <div class="item">
+              
+              <%= image_tag user.avatar.url, class: "ui avatar image" %>
+              
+              <div class="content">
+                
+                <div class="header"><%= link_to user.user_name, user_path(user) %></div>
+                
+              </div>
+              
+            </div>
+            
             <% end %>
-
-          </ul>
+            
+          </div>
+          
         </div>
+        
+        <div class="ui divider"></div>
+        
         <div class="description">
           <p><strong>Notes:</strong> <%= game_session.notes%></p>
 
@@ -31,14 +45,19 @@
           <p><strong>Start Time:</strong> <%= local_time(game_session.start_time, '%l:%M%P') %></p>
 
           <p><strong>End Time:</strong> <%= local_time(game_session.end_time, '%l:%M%P') %></p>
+          
+          <div class="ui divider"></div>
+          
           <% if user_signed_in? && game_session.users.ids.include?(current_user.id) %>
-          <%= button_to 'Leave Game', leave_game_path(game_session), action: "leave_game", class: "ng-button mini ui primary button" %>
+            <%= button_to 'Leave Game', leave_game_path(game_session), action: "leave_game", class: "game-button mini ui primary button" %>
+              <% if game_session.users.ids.last == current_user.id %>
+                <%= button_to 'Edit Session', edit_game_session_path(game_session), method: :get, class: "game-button mini ui orange button" %>
+            <% end %>
           <% else %>
-          <%= link_to 'Join Game', join_game_path(game_session), action: "join_game", method: :post, class: "ng-button mini ui primary button" %>
+            <%= link_to 'Join Game', join_game_path(game_session), action: "join_game", method: :post, class: "game-button mini ui primary button" %>
           <% end %>
         </div>
       </div>
     </div>
     <% end %>
   </div>
-</div>

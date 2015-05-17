@@ -1,3 +1,43 @@
 /*******************************
          Site Overrides
 *******************************/
+@media only screen and (max-width: (@largestMobileScreen)) {
+ .ng-button {
+   float: none;
+ }
+ .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: @tabletBreakpoint ) {
+ .ng-button {
+   float: none;
+ }
+  .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: @computerBreakpoint) {
+ .ng-button {
+   float: right;
+ }
+  .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: @largeMonitorBreakpoint) {
+ .ng-button {
+   float: right;
+ }
+  .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: @widescreenMonitorBreakpoint) {
+ .ng-button {
+   float: right;
+ }
+  .game-button {
+    float: right;
+  }
+}

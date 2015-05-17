@@ -2,55 +2,78 @@
   <p id="notice"><%= notice %></p>
 </div>
 
-<div class="sixteen wide column">
+<div class="twelve wide centered column">
   
-  <div class="ui divided items">
+  <div class="ui segment">
     
-    <div class="item">
-      
-      <div class="image">
-        <%= image_tag @user.avatar.url(:medium) %>
-      </div>
-      
-      <div class="content">
-        
-        <a class="header"><%= @user.user_name %></a>
-        
-        <div class="description">
+    <div class="ui divided items">
+
+      <div class="item">
+
+        <div class="image">
           
-          <p>
-            <strong>User name:</strong>
-            <%= @user.user_name %>
-          </p>
-          
-          <p>
-            <strong>Time Zone:</strong>
-            <%= @user.time_zone %>
-          </p>
-          
-          <p>
-            <strong>Xbox GamerTag:</strong>
-            <%= @user.xbox_name %>
-          </p>
-          
-          <p>
-            <strong>Steam Name:</strong>
-            <%= @user.steam_name %>
-          </p>
-          
-          <p>
-            <strong>Twitch Handle:</strong>
-            <%= @user.twitch_name %>
-          </p>
+          <%= image_tag @user.avatar.url(:medium) %>
           
         </div>
-        
-        <div class="extra">
-          <%= link_to 'Edit', edit_user_path(@user), class: "ui button primary" %>
+
+        <div class="content">
+
+          <a class="header"><%= @user.user_name %></a>
+
+          <div class="description">
+
+            <p>
+              
+              <strong>User name:</strong>
+              
+              <%= @user.user_name %>
+              
+            </p>
+
+            <p>
+              
+              <strong>Time Zone:</strong>
+              
+              <%= @user.time_zone %>
+              
+            </p>
+
+            <p>
+              
+              <strong>Xbox GamerTag:</strong>
+              
+              <%= @user.xbox_name %>
+              
+            </p>
+
+            <p>
+              
+              <strong>Steam Name:</strong>
+              
+              <%= @user.steam_name %>
+              
+            </p>
+
+            <p>
+              
+              <strong>Twitch Handle:</strong>
+              
+              <%= @user.twitch_name %>
+              
+            </p>
+
+          </div>
+
+          <div class="extra">
+            
+            <%= link_to 'Edit', edit_user_path(@user), class: "ui right floated button orange" %>
+            
+          </div>
+
         </div>
-        
+
       </div>
-      
+
     </div>
     
   </div>

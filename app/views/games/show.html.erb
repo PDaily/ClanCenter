@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="twelve wide centered column">
   
-  <div class="four wide column">
+  <div class="ui segment four wide column">
       <div class="ui items">
       <div class="item">
         <p class="image">
@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="extra">
-          <%= button_to 'Edit', edit_game_path(@game), method: "get", class: "ui yellow button" %>
+          <%= button_to 'Edit', edit_game_path(@game), method: "get", class: "ui right floated orange button" %>
         </div>
       </div>
     </div>
@@ -23,5 +23,21 @@
   <div class="seven wide column">
     <h2>Game Modes</h2>
     <div class="ui divider"></div>
+    <table class="ui tablet stackable table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Total Players</th>
+          <th class="right aligned">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @game.game_modes.each do |game_mode| %>
+          <td><%= game_mode.title %></td>
+          <td><%= game_mode.total_players %></td>
+          <td><%= link_to 'Destroy', {}, class: "ui right floated red button" %></td>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
