@@ -1,0 +1,24 @@
+<div class="ui floating labeled icon dropdown button">
+  <i class="filter icon"></i>
+  <span class="text">Filter</span>
+  <div class="menu">
+    <div class="header">
+      Search Games
+    </div>
+    <div class="ui left icon input">
+      <i class="search icon"></i>
+      <input type="text" name="search" placeholder="Search...">
+    </div>
+    <div class="header">
+      <i class="tags icon"></i>
+      Filter by Game
+    </div>
+    <% cache do %>
+      <% Game.all.each do |game| %>
+        <div class="item">
+          <%= game.title %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

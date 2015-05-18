@@ -1,4 +1,10 @@
-<h2 class="ng-session ui header">Current Gaming Sessions</h2> <%= link_to raw('Create Gaming Session <i class="add circle icon"></i>'), new_game_session_path, {class: "ng-session ng-button tiny ui primary button"}%>
+<h2 class="ui header">Current Gaming Sessions</h2>
+
+  <div class="ui divider"></div>
+
+  <%= render 'home/filter_game_sessions' %>
+
+  <%= render 'home/new_game_button' %>
 
   <div class="ui divider"></div>
 
