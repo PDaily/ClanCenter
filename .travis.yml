@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.1.5
+script: bundle exec rake
+before_install:
+  - gem update --system
+notifications:
+  webhooks:
+    urls:
+      - http://dc837.herokuapp.com/travis
