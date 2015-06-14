@@ -4,6 +4,7 @@
 
 [![Code Climate](https://codeclimate.com/github/PDaily/ClanCenter/badges/gpa.svg)](https://codeclimate.com/github/PDaily/ClanCenter)
 
+[![Coverage Status](https://coveralls.io/repos/PDaily/ClanCenter/badge.svg)](https://coveralls.io/r/PDaily/ClanCenter)
 **ClanCenter** is a [Rails 4] app written in [Ruby]. It draws heavy inspiration from [the100.io] in that you can create gaming sessions. Aside from that you can create a database of games and different game modes on the fly. 
 
 ### Requirements
