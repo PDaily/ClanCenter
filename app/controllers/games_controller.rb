@@ -1,3 +1,4 @@
+# Games Controller
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
@@ -25,7 +26,6 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(game_params)
-
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }

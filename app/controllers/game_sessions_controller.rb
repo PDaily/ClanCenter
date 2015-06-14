@@ -1,3 +1,4 @@
+# Game Sessions Controller
 class GameSessionsController < ApplicationController
   before_action :set_game_session, only: [:show, :edit, :update, :destroy, :join_game, :leave_game]
   before_action :authenticate_user!, only: [:edit, :new, :create, :join_game, :update, :destroy]

@@ -37,7 +37,7 @@ gem 'devise'
 
 gem 'devise-guests'
 
-gem "paperclip", "~> 4.2"
+gem 'paperclip', '~> 4.2'
 
 gem 'less-rails-semantic_ui'
 
@@ -58,6 +58,8 @@ group :development do
   gem 'rack-mini-profiler'
   
   gem 'flamegraph'
+  
+  gem 'rubocop'
 end
 
 
@@ -73,5 +75,10 @@ group :development, :test do
   
   gem 'better_errors'
   
+  gem 'simplecov', '~> 0.10', '>= 0.10.0', require: false
+  
+  gem 'coveralls', '~> 0.8', '>= 0.8.1', require: false
+  
+  gem 'codeclimate-test-reporter'
 end
 
