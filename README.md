@@ -1,5 +1,7 @@
 # ClanCenter
 
+[![Build Status](https://travis-ci.org/PDaily/ClanCenter.svg)](https://travis-ci.org/PDaily/ClanCenter)
+
 **ClanCenter** is a [Rails 4] app written in [Ruby]. It draws heavy inspiration from [the100.io] in that you can create gaming sessions. Aside from that you can create a database of games and different game modes on the fly. 
 
 ### Requirements
