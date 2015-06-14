@@ -1,5 +1,7 @@
 one:
-  user_name: DingleBot
+  user_name: DinkleBot
+  email: changeme@example.com
 
 two:
   user_name: Tazz
+  email: changemetoo@eample.com

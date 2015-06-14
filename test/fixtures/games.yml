@@ -1,11 +1,7 @@
 one:
-  game_title: Awesome Game
-  game_desc: Awesome!
-  game_mode: Deathmatch
-  total_players: 12
+  title: MineCraft
+  description: Blocks!
 
 two:
-  game_title: Slighty Less Awesome Game
-  game_desc: Its okay I guess..
-  game_mode: Survival
-  total_players: 4
+  title: Destiny
+  description: Shoot things!

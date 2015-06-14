@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  total_players: 1
-  game_id: 
+  title: Survival
+  total_players: 6
+  game_id: 1
 
 two:
-  title: MyString
-  total_players: 1
-  game_id: 
+  title: Patrol
+  total_players: 3
+  game_id: 2

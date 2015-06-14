@@ -18,7 +18,7 @@ class GameSessionsControllerTest < ActionController::TestCase
 
   test "should create game_session" do
     assert_difference('GameSession.count') do
-      post :create, game_session: { creator: @game_session.creator, game: @game_session.game, game_mode: @game_session.game_mode }
+      post :create, game_session: { users: @game_session.users, game: @game_session.game, game_mode: @game_session.game_mode }
     end
 
     assert_redirected_to game_session_path(assigns(:game_session))
@@ -35,7 +35,7 @@ class GameSessionsControllerTest < ActionController::TestCase
   end
 
   test "should update game_session" do
-    patch :update, id: @game_session, game_session: { creator: @game_session.creator, game: @game_session.game, game_mode: @game_session.game_mode }
+    patch :update, id: @game_session, game_session: { users: @game_session.users, game: @game_session.game, game_mode: @game_session.game_mode }
     assert_redirected_to game_session_path(assigns(:game_session))
   end
 
