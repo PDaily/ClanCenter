@@ -4,6 +4,10 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
   end
+  
+  def teardown                                         
+    Warden.test_reset!                                 
+  end 
 
   test "should get index" do
     get :index
@@ -18,7 +22,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { user_name: @user.user_name }
+      post :create, user: { user_name: @user.user_name, email: @user.email }
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -44,6 +48,6 @@ class UsersControllerTest < ActionController::TestCase
       delete :destroy, id: @user
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to root_path
   end
 end

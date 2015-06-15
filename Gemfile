@@ -47,6 +47,8 @@ gem 'local_time'
 
 gem 'rails_admin'
 
+gem 'rails_12factor', group: :production
+
 group :development do
   
   gem 'quiet_assets'
