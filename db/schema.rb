@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150511012241) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "game_modes", force: :cascade do |t|
     t.string   "title"
     t.integer  "total_players"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150511012241) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "game_modes", ["game_id"], name: "index_game_modes_on_game_id"
+  add_index "game_modes", ["game_id"], name: "index_game_modes_on_game_id", using: :btree
 
   create_table "game_sessions", force: :cascade do |t|
     t.string   "notes"
@@ -34,16 +37,16 @@ ActiveRecord::Schema.define(version: 20150511012241) do
     t.date     "game_date"
   end
 
-  add_index "game_sessions", ["game_id"], name: "index_game_sessions_on_game_id"
-  add_index "game_sessions", ["game_mode_id"], name: "index_game_sessions_on_game_mode_id"
+  add_index "game_sessions", ["game_id"], name: "index_game_sessions_on_game_id", using: :btree
+  add_index "game_sessions", ["game_mode_id"], name: "index_game_sessions_on_game_mode_id", using: :btree
 
   create_table "game_sessions_users", force: :cascade do |t|
     t.integer "game_session_id"
     t.integer "user_id"
   end
 
-  add_index "game_sessions_users", ["game_session_id"], name: "index_game_sessions_users_on_game_session_id"
-  add_index "game_sessions_users", ["user_id"], name: "index_game_sessions_users_on_user_id"
+  add_index "game_sessions_users", ["game_session_id"], name: "index_game_sessions_users_on_game_session_id", using: :btree
+  add_index "game_sessions_users", ["user_id"], name: "index_game_sessions_users_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.string   "title"
@@ -70,6 +73,10 @@ ActiveRecord::Schema.define(version: 20150511012241) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.string   "time_zone"
     t.string   "xbox_name"
     t.string   "steam_name"
@@ -81,7 +88,7 @@ ActiveRecord::Schema.define(version: 20150511012241) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
