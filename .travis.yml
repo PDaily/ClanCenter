@@ -4,7 +4,7 @@ rvm:
 addons:
   postgresql: "9.3"
 before_script:
-  - psql -c 'create database clancenter_test;'
+  - psql -c 'create database clancenter_test;' -U postgres
 script: bundle exec rake spec
 before_install:
   - gem update --system

@@ -16,6 +16,7 @@ test:
   <<: *default
   database: clancenter_testing
   host: localhost
+  user: postgres
 
 production:
   <<: *default
