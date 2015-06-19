@@ -44,7 +44,7 @@ RSpec.describe GameSessionsController, type: :controller do
   describe 'POST #create' do
     it 'successfully creates a game_session' do
       expect {
-        post :create, game_session: attributes_for(:game_session)
+        post :create, game_session: attributes_for(:game_session, game_id: game.id, game_mode_id: game_mode.id)
       }.to change(GameSession, :count).by(1)
     end
   end

@@ -2,7 +2,7 @@
 class GameSessionsController < ApplicationController
   before_action :set_game_session, only: [:show, :edit, :update, :destroy, :join_game, :leave_game]
   before_action :authenticate_user!, only: [:edit, :new, :create, :join_game, :update, :destroy]
-  
+
   # GET /game_sessions
   # GET /game_sessions.json
   def index
@@ -76,21 +76,21 @@ class GameSessionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def update_games
     @game_modes = GameMode.where("game_id = ?", params[:game_id])
     respond_to do |format|
       format.js
     end
   end
-  
+
   def join_game
     @game_session.users << current_user
     respond_to do |format|
       format.html { redirect_to @game_session, notice: "Successfully joined game session!"}
     end
   end
-  
+
   def leave_game
     @game_session.users.delete(current_user)
     if @game_session.users.empty?
@@ -106,13 +106,13 @@ class GameSessionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_game_session
-      @game_session = GameSession.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_game_session
+    @game_session = GameSession.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def game_session_params
     params.require(:game_session).permit(:users, :notes, :game_date, :start_time, :end_time, :game_id, :game_mode_id)
-    end
+  end
 end
