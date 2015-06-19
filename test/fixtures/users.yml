@@ -1,9 +1,0 @@
-one:
-  user_name: DinkleBot
-  email: changeme@example.com
-  encrypted_password: changeme
-
-two:
-  user_name: Tazz
-  email: changemetoo@eample.com
-  encrypted_password: changeme2
