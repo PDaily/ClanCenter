@@ -3,5 +3,4 @@ FactoryGirl.define do
     title 'Minecraft'
     description 'Blocks!'
   end
-
 end

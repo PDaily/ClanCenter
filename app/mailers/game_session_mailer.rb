@@ -1,5 +1,5 @@
 class GameSessionMailer < ApplicationMailer
-  default from: "gamebot@dc837.io"
+  default from: 'gamebot@dc837.io'
 
   def new_game_session_email(game_session, user)
     @game_session = game_session
@@ -10,9 +10,8 @@ class GameSessionMailer < ApplicationMailer
     @user = user
     @user_name = @user.user_name
 
-
     @all_users.each do |u|
-      @start_time = @game_session.start_time.in_time_zone(u.time_zone.to_s).strftime("%l:%M%P")
+      @start_time = @game_session.start_time.in_time_zone(u.time_zone.to_s).strftime('%l:%M%P')
       mail(to: u.email, subject: "New Session: #{@game_session_title}-#{@game_mode_title} | #{@start_time}")
     end
   end

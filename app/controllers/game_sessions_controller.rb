@@ -20,7 +20,7 @@ class GameSessionsController < ApplicationController
   def new
     @games = Game.all
     @game_session = GameSession.new
-    @game_modes = GameMode.where("game_id = ?", Game.first.id)
+    @game_modes = GameMode.where('game_id = ?', Game.first.id)
     @user = current_user
     @current_time = Time.now.in_time_zone(current_user.time_zone)
   end
@@ -78,7 +78,7 @@ class GameSessionsController < ApplicationController
   end
 
   def update_games
-    @game_modes = GameMode.where("game_id = ?", params[:game_id])
+    @game_modes = GameMode.where('game_id = ?', params[:game_id])
     respond_to do |format|
       format.js
     end
@@ -87,7 +87,7 @@ class GameSessionsController < ApplicationController
   def join_game
     @game_session.users << current_user
     respond_to do |format|
-      format.html { redirect_to @game_session, notice: "Successfully joined game session!"}
+      format.html { redirect_to @game_session, notice: 'Successfully joined game session!' }
     end
   end
 
@@ -96,22 +96,23 @@ class GameSessionsController < ApplicationController
     if @game_session.users.empty?
       @game_session.destroy
       respond_to do |format|
-        format.html { redirect_to game_sessions_url, notice: "Successfully quit game session! No more users- game session deleted!" }
+        format.html { redirect_to game_sessions_url, notice: 'Successfully quit game session! No more users- game session deleted!' }
       end
     else
       respond_to do |format|
-        format.html { redirect_to game_sessions_url, notice: "Successfully quit game session!"}
+        format.html { redirect_to game_sessions_url, notice: 'Successfully quit game session!' }
       end
     end
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_game_session
     @game_session = GameSession.find(params[:id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
   def game_session_params
     params.require(:game_session).permit(:users, :notes, :game_date, :start_time, :end_time, :game_id, :game_mode_id)
   end

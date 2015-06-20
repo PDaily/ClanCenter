@@ -6,11 +6,11 @@ RSpec.describe GamesController, type: :controller do
   let(:game) { create(:game) }
 
   describe 'factory' do
-    it "should have a title" do
+    it 'should have a title' do
       expect(game.title).not_to be_nil
     end
 
-    it "should have a description" do
+    it 'should have a description' do
       expect(game.description).not_to be_nil
     end
   end
@@ -55,22 +55,19 @@ RSpec.describe GamesController, type: :controller do
     end
   end
 
-  # TODO: PATCH #update spec
+  # TODO: PATCH #update spec for game
   describe 'PATCH #update' do
     it 'successfully updates a game' do
-
     end
   end
 
   describe 'DELETE #destroy' do
     it 'successfully deletes a game' do
       @game = create(:game)
-      expect{
-         delete :destroy, id: @game
-       }.to change(Game, :count).by(-1)
-
-       expect(response).to redirect_to(games_path)
+      expect {
+        delete :destroy, id: @game
+      }.to change(Game, :count).by(-1)
+      expect(response).to redirect_to(games_path)
     end
   end
-
 end

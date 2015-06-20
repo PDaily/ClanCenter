@@ -7,23 +7,6 @@ RSpec.describe GameSessionsController, type: :controller do
   let(:game) { create(:game) }
   let(:game_mode) { create(:game_mode) }
 
-  describe 'Factory' do
-    context 'game_session.game' do
-      it 'correctly has a title assigned to it' do
-        expect(game_session.game.title).not_to be_nil
-        expect(game_session.game.title).to eq('Minecraft')
-      end
-    end
-
-    context 'game_session.game_mode' do
-      it 'correctly has a title assigned to it' do
-        expect(game_session.game_mode.title).not_to be_nil
-        expect(game_session.game_mode.title).to eq('Survival')
-      end
-    end
-  end
-
-
   describe 'GET #index' do
     it 'responds successfully with an HTTP 200 status code' do
       get :index
@@ -65,22 +48,19 @@ RSpec.describe GameSessionsController, type: :controller do
     end
   end
 
-  # TODO: PATCH #update spec
+  # TODO: PATCH #update spec for game_session
   describe 'PATCH #update' do
     it 'successfully updates a game session' do
-
     end
   end
 
   describe 'DELETE #destroy' do
     it 'successfully deletes a game session' do
       @game_session = create(:game_session)
-      expect{
-         delete :destroy, id: @game_session
-       }.to change(GameSession, :count).by(-1)
-
-       expect(response).to redirect_to(game_sessions_path)
+      expect {
+        delete :destroy, id: @game_session
+      }.to change(GameSession, :count).by(-1)
+      expect(response).to redirect_to(game_sessions_path)
     end
   end
-
 end

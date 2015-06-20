@@ -7,10 +7,9 @@ FactoryGirl.define do
     email
     user_name 'testuser'
     xbox_name 'testuser'
-    password "password"
-    password_confirmation "password"
-    confirmed_at Time.now
+    password 'password'
+    password_confirmation 'password'
+    confirmed_at Time.now.strftime('%R')
     time_zone 'Eastern Time (US & Canada)'
   end
-
 end

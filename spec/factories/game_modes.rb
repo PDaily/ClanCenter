@@ -4,5 +4,4 @@ FactoryGirl.define do
     total_players 6
     game_id 1
   end
-
 end

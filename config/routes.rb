@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'game_sessions/update_games', as: 'update_games'
-  post 'game_sessions/:id/join_game', to: "game_sessions#join_game", as: "join_game"
-  post 'game_sessions/:id/leave_game', to: "game_sessions#leave_game", as: "leave_game"
+  post 'game_sessions/:id/join_game', to: 'game_sessions#join_game', as: 'join_game'
+  post 'game_sessions/:id/leave_game', to: 'game_sessions#leave_game', as: 'leave_game'
   resources :game_sessions
 
   get 'home/index'
@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with 'rake routes'.
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed with 'root'
   root 'home#index'
 
   # Example of regular route:

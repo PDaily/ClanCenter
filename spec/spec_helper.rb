@@ -1,10 +1,9 @@
 require 'coveralls'
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 Coveralls.wear!
 CodeClimate::TestReporter.start
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
-
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
@@ -16,5 +15,4 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
-
 end
