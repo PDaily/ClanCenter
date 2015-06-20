@@ -1,6 +1,6 @@
 require 'coveralls'
 require 'codeclimate-test-reporter'
-Coveralls.wear!
+Coveralls.wear!('rails')
 CodeClimate::TestReporter.start
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
