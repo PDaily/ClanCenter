@@ -6,10 +6,12 @@
   </div>
   <%= form_for @user, html: {class: "ui form attached fluid segment"} do |f| %>
     <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <div id="error_explanation" class="ui visible error message">
+        <div class="header">
+          <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+        </div>
 
-        <ul>
+        <ul class="list">
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -28,7 +30,7 @@
   
     <div class="field">
       <%= f.label :avatar, "Avatar" %>
-      <%= f.file_field :avatar %>
+      <%= f.file_field :avatar, accept: 'image/png, image/gif, image/jpeg' %>
     </div>
   
     <div class="required field">
@@ -46,14 +48,22 @@
       <%= f.text_field :steam_name %>
     </div>
   
-    <div>
+    <div class="field">
       <%= f.label :twitch_name, "Twitch Handle" %>
       <%= f.text_field :twitch_name %>
     </div>
-  
-    <div class="actions">
-      <%= f.submit %>
+
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
     </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+  
+    <%= f.submit "Update Me!", class: "ui green button" %>
   
   <% end %>
   <% if @edit_user_page %>
