@@ -73,7 +73,7 @@ RSpec.describe UsersController, type: :controller do
       @user = create(:user)
       patch :update, {id: @user.to_param, user: valid_attributes}
       @user.reload
-      expect(response).to have_http_status(200)
+      expect(response).to redirect_to(@user)
       expect(@user.xbox_name).to eq('prettydecentdude')
     end
 
