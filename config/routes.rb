@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'game_sessions/update_games', as: 'update_games'
+  get 'home/game', to: 'home#sort_by_game', as: 'sort_by_game'
+  get 'home/game_mode', to: 'home#sort_by_game_mode', as: 'sort_by_game_mode'
   post 'game_sessions/:id/join_game', to: 'game_sessions#join_game', as: 'join_game'
   post 'game_sessions/:id/leave_game', to: 'game_sessions#leave_game', as: 'leave_game'
   resources :game_sessions

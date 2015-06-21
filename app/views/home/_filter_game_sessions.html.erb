@@ -15,7 +15,7 @@
     </div>
     <% cache do %>
       <% Game.all.each do |game| %>
-        <div class="item">
+        <div class="item filter-session" data-id="<%= game.id %>">
           <%= game.title %>
         </div>
       <% end %>
