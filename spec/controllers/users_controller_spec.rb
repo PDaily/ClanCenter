@@ -66,7 +66,21 @@ RSpec.describe UsersController, type: :controller do
 
   # TODO: PATCH #update spec for users
   describe 'PATCH #update' do
+    let(:valid_attributes) { {xbox_name: 'prettydecentdude'} }
+    let(:invalid_attributes) { {email: nil} }
+
     it 'successfully updates a user' do
+      @user = create(:user)
+      patch :update, {id: @user.to_param, user: valid_attributes}
+      @user.reload
+      expect(response).to have_http_status(200)
+      expect(@user.xbox_name).to eq('prettydecentdude')
+    end
+
+    it 'fails to update a user' do
+      @user = create(:user)
+      patch :update, {id: @user.to_param, user: invalid_attributes}
+      expect(response).to render_template('edit')
     end
   end
 

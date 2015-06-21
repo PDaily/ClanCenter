@@ -30,6 +30,11 @@ RSpec.describe GameSessionsController, type: :controller do
         post :create, game_session: attributes_for(:game_session, game_id: game.id, game_mode_id: game_mode.id)
       }.to change(GameSession, :count).by(1)
     end
+    
+    it 'fails to create a game session' do
+      post :create, game_session: attributes_for(:game_session)
+      expect(response).to render_template('new')
+    end
   end
 
   describe 'GET #show' do
@@ -50,7 +55,21 @@ RSpec.describe GameSessionsController, type: :controller do
 
   # TODO: PATCH #update spec for game_session
   describe 'PATCH #update' do
+    let(:valid_attributes) { {notes: 'Why did you blow up my castle?!'} }
+    let(:invalid_attributes) { {notes: nil} }
+
     it 'successfully updates a game session' do
+      @game_session = create(:game_session)
+      patch :update, {id: @game_session.to_param, game_session: valid_attributes}
+      @game_session.reload
+      expect(response).to redirect_to(@game_session)
+      expect(@game_session.notes).to eq('Why did you blow up my castle?!')
+    end
+
+    it 'fails to update a game session' do
+      @game_session = create(:game_session)
+      patch :update, {id: @game_session.to_param, game_session: invalid_attributes}
+      expect(response).to render_template('edit')
     end
   end
 
@@ -61,6 +80,15 @@ RSpec.describe GameSessionsController, type: :controller do
         delete :destroy, id: @game_session
       }.to change(GameSession, :count).by(-1)
       expect(response).to redirect_to(game_sessions_path)
+    end
+  end
+  
+  describe 'POST #join_game' do
+    it 'successfully joins a game session' do
+      @game_session = create(:game_session)
+      post :join_game, id: @game_session
+      expect(response).to redirect_to(game_session_path)
+      expect(@game_session.users).to include(subject.current_user)
     end
   end
 end
