@@ -79,7 +79,7 @@ RSpec.describe GameSessionsController, type: :controller do
       expect {
         delete :destroy, id: @game_session
       }.to change(GameSession, :count).by(-1)
-      expect(response).to redirect_to(game_sessions_path)
+      expect(response).to redirect_to(root_path)
     end
   end
   

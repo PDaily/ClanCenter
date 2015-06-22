@@ -9,6 +9,6 @@ FactoryGirl.define do
     xbox_name 'testuser'
     password 'password'
     password_confirmation 'password'
-    time_zone 'Eastern Time (US & Canada)'
+    time_zone 'Eastern Time (US & Canada)'	
   end
 end
