@@ -18,3 +18,9 @@
 
 # Ignore coveralls
 /coverage/
+
+# Ignore spring
+/spring/
+
+# Ignore public assets
+/public/assets/

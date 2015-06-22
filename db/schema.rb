@@ -59,17 +59,6 @@ ActiveRecord::Schema.define(version: 20150621160805) do
     t.datetime "game_icon_updated_at"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "roles_users", id: false, force: :cascade do |t|
-    t.integer "role_id"
-    t.integer "user_id"
-  end
-
   create_table "royce_connector", force: :cascade do |t|
     t.integer  "roleable_id",   null: false
     t.string   "roleable_type", null: false

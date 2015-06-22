@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require semantic_ui/semantic_ui
 //= require turbolinks
@@ -33,4 +34,3 @@ ready = function() {
 };
 
 $(document).ready(ready);
-$(document).on('page:load', ready);

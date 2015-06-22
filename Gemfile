@@ -53,6 +53,8 @@ gem 'royce'
 
 gem 'cancancan', '~> 1.10'
 
+gem 'jquery-turbolinks'
+
 group :development do
   
   gem 'quiet_assets'
