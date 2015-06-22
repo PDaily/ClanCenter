@@ -82,7 +82,7 @@ Rails.application.configure do
     :user_name => ENV["EMAIL_USERNAME"],
     :password => 'ENV["EMAIL_PASSWORD"]',
     :domain => ENV["EMAIL_DOMAIN"],
-    :address => 'ENV["EMAIL_HOST_ADDRESS"]',
+    :address => ENV["EMAIL_HOST_ADDRESS"],
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true

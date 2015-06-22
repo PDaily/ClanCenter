@@ -1,5 +1,5 @@
 class GameSessionMailer < ApplicationMailer
-  default from: 'gamebot@dc837.io'
+  default from: "gamebot@#{ENV["EMAIL_DOMAIN"]}"
 
   def new_game_session_email(game_session, user)
     @game_session = game_session

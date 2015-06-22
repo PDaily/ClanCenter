@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'bot@dc837.io'
+  default from: "bot@#{ENV["EMAIL_DOMAIN"]}"
   layout 'mailer'
 end
