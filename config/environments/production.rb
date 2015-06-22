@@ -80,7 +80,7 @@ Rails.application.configure do
   # ActionMailer Settings
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV["EMAIL_USERNAME"],
-    :password => 'ENV["EMAIL_PASSWORD"]',
+    :password => ENV["EMAIL_PASSWORD"],
     :domain => ENV["EMAIL_DOMAIN"],
     :address => ENV["EMAIL_HOST_ADDRESS"],
     :port => 587,
