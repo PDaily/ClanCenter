@@ -26,6 +26,10 @@ ready = function() {
   $('#main-menu').on('click', function () {
     $('#side-menu').sidebar('toggle');
   });
+	$('.message .close').on('click', function() {
+		$(this).closest('.message').fadeOut();
+	});
+	console.log("Page loaded!")
 };
 
 $(document).ready(ready);

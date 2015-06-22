@@ -57,6 +57,7 @@ GEM
       uniform_notifier (~> 1.9.0)
     byebug (4.0.5)
       columnize (= 0.9.0)
+    cancancan (1.11.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -88,8 +89,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-guests (0.3.3)
-      devise
     diff-lcs (1.2.5)
     docile (1.1.5)
     domain_name (0.5.24)
@@ -235,6 +234,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    royce (1.0.6)
+      rails (>= 4.1.4)
     rspec-core (3.3.0)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.0)
@@ -320,12 +321,12 @@ DEPENDENCIES
   better_errors
   bullet
   byebug
+  cancancan (~> 1.10)
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   coveralls (~> 0.8, >= 0.8.1)
   database_cleaner (~> 1.4.1)
   devise
-  devise-guests
   factory_girl_rails (~> 4.0)
   flamegraph
   jbuilder (~> 2.0)
@@ -341,6 +342,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails_12factor
   rails_admin
+  royce
   rspec-rails (~> 3.0)
   rubocop
   sass-rails (~> 5.0)

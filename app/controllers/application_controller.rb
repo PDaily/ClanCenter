@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
     time_zone = current_user.try(:time_zone) || 'UTC'
     Time.use_zone(time_zone, &block)
   end
+	
+	rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_url, :alert => exception.message
+  end
 end

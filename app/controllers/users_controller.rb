@@ -1,6 +1,7 @@
 # Users Controller
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+	load_and_authorize_resource
 
   # GET /users
   # GET /users.json
@@ -27,6 +28,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+
+		@user.add_role :user
 
     respond_to do |format|
       if @user.save

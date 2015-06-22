@@ -9,7 +9,6 @@ FactoryGirl.define do
     xbox_name 'testuser'
     password 'password'
     password_confirmation 'password'
-    confirmed_at Time.now.strftime('%R')
     time_zone 'Eastern Time (US & Canada)'
   end
 end

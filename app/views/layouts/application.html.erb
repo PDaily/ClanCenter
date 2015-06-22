@@ -14,10 +14,24 @@
   <%= render 'navbar/navbar' %>
   
   <div class="pusher">
+		
+		<% if notice %>
+		<div class="ui success flash message">
+			<i class="close icon"></i>
+			<div id="notice" class="header">
+				<%= notice %>
+			</div>
+		</div>
+		<% elsif alert %>
+		<div class="ui warning flash message">
+			<i class="close icon"></i>
+			<div id="alert" class="header">
+				<%= alert %>
+			</div>
+		</div>
+		<% end %>
+		
     <div class="sixteen column stackable padded ui grid">
-      <div class="ui floating message">
-        <p id="notice"><%= notice %></p>
-      </div>
       <%= yield %>
     </div>
   </div>  

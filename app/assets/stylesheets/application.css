@@ -47,3 +47,15 @@ i.footer-heart.heart.icon {
   left: 0;
   width: 100%;
 }
+
+.ui.segment:first-child {
+  margin-top: 2em;
+}
+
+.ui.success.flash.message {
+  margin: 1em 0em 0em 0em;
+}
+
+.ui.warning.flash.message {
+	margin: 1em 0em 0em 0em;
+}

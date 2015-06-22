@@ -2,12 +2,13 @@
 class GameSessionsController < ApplicationController
   before_action :set_game_session, only: [:show, :edit, :update, :destroy, :join_game, :leave_game]
   before_action :authenticate_user!, only: [:edit, :new, :create, :join_game, :update, :destroy]
-
-  # GET /game_sessions
-  # GET /game_sessions.json
-  def index
-    @game_sessions = GameSession.includes(:users, :game, :game_mode)
-  end
+	load_and_authorize_resource
+	
+	# GET /game_sessions
+	# GET /game_sessions.json
+	def index
+		@game_sessions = GameSession.includes(:users, :game, :game_mode)
+ 	end
 
   # GET /game_sessions/1
   # GET /game_sessions/1.json
@@ -72,7 +73,7 @@ class GameSessionsController < ApplicationController
   def destroy
     @game_session.destroy
     respond_to do |format|
-      format.html { redirect_to game_sessions_url, notice: 'Game session was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Game session was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -96,11 +97,11 @@ class GameSessionsController < ApplicationController
     if @game_session.users.empty?
       @game_session.destroy
       respond_to do |format|
-        format.html { redirect_to game_sessions_url, notice: 'Successfully quit game session! No more users- game session deleted!' }
+        format.html { redirect_to root_url, notice: 'Successfully quit game session! No more users- game session deleted!' }
       end
     else
       respond_to do |format|
-        format.html { redirect_to game_sessions_url, notice: 'Successfully quit game session!' }
+        format.html { redirect_to root_url, notice: 'Successfully quit game session!' }
       end
     end
   end

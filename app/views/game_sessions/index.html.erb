@@ -43,15 +43,16 @@
           <%= local_time(game_session.end_time, '%l:%M%P') %>
         </td>
         <td>
-          <% if game_session.users.ids.include?(current_or_guest_user.id)  %>
-            <%= button_to 'Leave', leave_game_path(game_session), action: "leave_game" %>
-          <% else %>
+          <% if user_signed_in? %>
+						<% if game_session.users.ids.include?(current_user.id)  %>
+							<%= button_to 'Leave', leave_game_path(game_session), action: "leave_game" %>
+					<% end %>
             <%= button_to 'Join', join_game_path(game_session), action: "join_game" %>
           <% end %>
         </td>
         <td><%= link_to 'Show', game_session %></td>
         <td>
-          <% if game_session.users.last.id == current_or_guest_user.id %>
+          <% if game_session.users.last.id == current_user.id %>
             <%= link_to 'Edit', edit_game_session_path(game_session) %>
           <% end %>
         </td>

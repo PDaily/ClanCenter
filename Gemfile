@@ -35,8 +35,6 @@ gem 'puma'
 
 gem 'devise'
 
-gem 'devise-guests'
-
 gem 'paperclip', '~> 4.2'
 
 gem 'less-rails-semantic_ui'
@@ -50,6 +48,10 @@ gem 'rails_admin'
 gem 'rails_12factor', group: :production
 
 gem 'stackprof'
+
+gem 'royce'
+
+gem 'cancancan', '~> 1.10'
 
 group :development do
   

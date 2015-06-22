@@ -22,11 +22,6 @@ RSpec.describe User, type: :model do
     expect(user.password).to eq('password')
   end
 
-  it 'is confirmed' do
-    expect(user.confirmed_at).not_to be_nil
-    expect(user.confirmed_at).to eq(Time.now.strftime('%R'))
-  end
-
   it 'has a time zone' do
     expect(user.time_zone).not_to be_nil
     expect(user.time_zone).to eq('Eastern Time (US & Canada)')

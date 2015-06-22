@@ -6,8 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-users = User.create([{ email: 'guy@guy.com', password: 'changeme', user_name: 'dinklebot', xbox_name: 'dinklebot', time_zone: 'Eastern Time (US & Canada)', confirmed_at: Time.now },
-        { email: 'example@guy.com', password: 'changeme', user_name: 'tinktink', xbox_name: 'dinklebot', time_zone: 'Eastern Time (US & Canada)', confirmed_at: Time.now }])
+user_one = User.create(email: 'guy@guy.com', password: 'changeme', user_name: 'dinklebot', xbox_name: 'dinklebot', time_zone: 'Eastern Time (US & Canada)')
+
+user_one.add_role :mod
+
+user_two = User.create(email: 'example@guy.com', password: 'changeme', user_name: 'tinktink', xbox_name: 'dinklebot', time_zone: 'Eastern Time (US & Canada)')
+
+user_two.add_role :user
 
 minecraft = Game.create(title: 'Minecraft', description: 'Blocks!')
 minecraft.game_modes.create(title: "Survival", game: Game.find_by(title: "Minecraft"), total_players: 6)

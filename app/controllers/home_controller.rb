@@ -1,6 +1,8 @@
 # Home Root Controller
 class HomeController < ApplicationController
+	load_resource :game_session
   def index
+		authorize! :edit, GameSession
     @game_sessions = GameSession.includes(:users, :game, :game_mode)
   end
 
