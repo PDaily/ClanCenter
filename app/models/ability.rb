@@ -10,9 +10,10 @@ class Ability
 			can :manage, [ GameSession, Game, GameMode ]
 			can :read, :all
 		end
-      can :read, :all
+      can :read, [ GameSession, Game, User ]
 			# manage owned gamesessions 
-			can :manage, GameSession, :id => user.id
+			can :manage, GameSession, :creator_id => user.id
+			# join gamesessions
 			can :join_game, GameSession
 			# manage own profile
 			can [:edit, :update, :destroy], User, :id => user.id 
