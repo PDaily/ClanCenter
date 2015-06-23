@@ -55,7 +55,7 @@ gem 'cancancan', '~> 1.10'
 
 gem 'jquery-turbolinks'
 
-gem 'aws-sdk', group: :production
+gem 'aws-sdk', '~> 1.6', group: :production
 
 group :development do
   
