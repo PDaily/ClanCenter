@@ -1,6 +1,6 @@
 <div class="menu">
           
-  <a href="/users/<%= current_user.id %>" class="item"><%= image_tag current_user.avatar.url, class:"ui avatar image" %> Profile</a>
+  <a href="/users/<%= current_user.id %>" class="item"><%= image_tag current_user.avatar.url, class:"ui avatar image" %> <%= current_user.user_name %></a>
   
   <div class="item">
     

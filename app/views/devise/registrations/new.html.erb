@@ -29,7 +29,7 @@
       <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone, html: {class: "ui selection dropdown", id: "time-zone-dropdown"}, required: true %>
     </div>
   
-    <div class="field">
+    <div class="required field">
       <%= f.label :xbox_name, "Xbox GamerTag" %>
       <%= f.text_field :xbox_name, required: true %>
     </div>
@@ -44,7 +44,7 @@
       <%= f.text_field :twitch_name %>
     </div>
 
-    <div class="field">
+    <div class="required field">
       <%= f.label :password %>
       <% if @validatable %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -52,7 +52,7 @@
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
-    <div class="field">
+    <div class="required field">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>

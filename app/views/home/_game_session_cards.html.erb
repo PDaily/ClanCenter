@@ -14,7 +14,7 @@
       <div class="content">
         <%= link_to game_session.game.title.titleize + " | " +  game_session.game_mode.title.titleize, game_session, class: "header" %>
         <div class="meta">
-          <p>Players: <%= game_session.users.count %>/<%= game_session.game_mode.total_players %></p>
+          <p>users: <%= game_session.users.count %>/<%= game_session.game_mode.total_players %></p>
           <div class="ui divided list">
             <% game_session.users.each do |user| %>
             <div class="item">

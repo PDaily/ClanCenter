@@ -4,14 +4,18 @@
     Home
   </a>
   <div class="ui divider"></div>
-  <a class="item">
+  <a class="vertically fitted disabled item">
     <i class="mail icon"></i>
     Messages
   </a>
   <div class="ui divider"></div>
-  <a class="item">
-    <i class="settings icon"></i>
-    Settings
+  <% if can? :update, Game %>
+  <p class="vertically fitted item">Moderation Tools</p>
+  <div class="ui divider"></div>
+  <a class="vertically fitted item">
+    <i class="game icon"></i>
+    Game Settings
   </a>
   <div class="ui divider"></div>
+  <% end %>
 </div>

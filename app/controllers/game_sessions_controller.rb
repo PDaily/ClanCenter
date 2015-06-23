@@ -39,14 +39,15 @@ class GameSessionsController < ApplicationController
   # POST /game_sessions.json
   def create
     @game_session = GameSession.new(game_session_params)
+    @game_session.creator = current_user
 
     respond_to do |format|
       if @game_session.save
         format.html { redirect_to @game_session, notice: 'Game session was successfully created.' }
         format.json { render :show, status: :created, location: @game_session }
         @game_session.users << current_user
-        @user = current_user
-        GameSessionMailer.new_game_session_email(@game_session, @user).deliver_now
+
+        GameSessionMailer.new_game_session_email(@game_session, current_user).deliver_now
       else
         format.html { render :new }
         format.json { render json: @game_session.errors, status: :unprocessable_entity }
