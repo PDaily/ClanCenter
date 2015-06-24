@@ -57,6 +57,8 @@ gem 'jquery-turbolinks'
 
 gem 'aws-sdk', '~> 1.6', group: :production
 
+gem 'rollbar', '~> 1.5.3'
+
 group :development do
   
   gem 'quiet_assets'
