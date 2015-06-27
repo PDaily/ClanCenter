@@ -2,7 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+  $('#game_mode_select').dropdown()
   $('#games_select').dropdown {
+    transition: 'slide down'
     onChange: () ->
       $(document).on 'change', '#games_select', (evt) ->
         $.ajax '/game_sessions/update_games',
@@ -13,4 +15,7 @@ $ ->
         }
         error: (jqXHR, textStatus, errorThrown) ->
           console.log("Error: #{textStatus}")
+        success: () ->
+          text = $("#game_mode_select option:selected").text()
+          $('#game_mode_select').dropdown('set text', text)
   }
