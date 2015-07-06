@@ -17,7 +17,7 @@ class Ability
       can :read, [ GameSession, Game, User ]
 			can [:destroy, :edit], GameSession, :creator_id => user.id # manage owned gamesessions
 			can :create, GameSession # create gamesession
-			can [:update_games, :sort_by_game], GameSession
+			can [:update_games, :sort_by_game, :end_game], GameSession
 			can :join_game, GameSession # join gamesessions
 			can :leave_game, GameSession # leave gamesessions
 			can [:edit, :update, :destroy], User, :id => user.id # manage own profile

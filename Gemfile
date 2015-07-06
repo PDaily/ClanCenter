@@ -59,6 +59,8 @@ gem 'aws-sdk', '~> 1.6', group: :production
 
 gem 'rollbar', '~> 1.5.3'
 
+gem 'sidekiq'
+
 group :development do
   
   gem 'quiet_assets'
