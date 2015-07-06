@@ -4,6 +4,7 @@
 @media only screen and (max-width: (@largestMobileScreen)) {
  .ng-button {
    float: none;
+   margin-top: 0.5em !important;
  }
  .game-button {
     float: right;
@@ -11,8 +12,9 @@
 }
 @media only screen and (min-width: @tabletBreakpoint ) {
  .ng-button {
-   float: none;
- }
+   float: right;
+   margin-top: 0.5em !important;
+ }to
   .game-button {
     float: right;
   }

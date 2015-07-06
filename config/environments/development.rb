@@ -13,7 +13,7 @@ Rails.application.configure do
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -45,15 +45,13 @@ Rails.application.configure do
 
   # Better errors
   config.consider_all_requests_local = true
-  BetterErrors::Middleware.allow_ip! '172.17.42.1'
-
-  # Paperclip for codio
-  Paperclip.options[:command_path] = '/home/codio/.parts/bin/'
-
+  BetterErrors::Middleware.allow_ip! '68.83.81.231'
+  BetterErrors::Middleware.allow_ip! '96.88.179.182'
+  
   config.after_initialize do
     Bullet.enable = true
     Bullet.console = true
   end
 
-  config.web_console.whitelisted_ips = '172.17.42.1'
+  config.web_console.whitelisted_ips = ['68.83.81.231' , '96.88.179.182']
 end

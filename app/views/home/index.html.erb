@@ -1,7 +1,43 @@
 <div class="sixteen wide column">
-  <%= render 'game_session_cards' %>
+  <div class="ui blue attached segment"><h2 class="ui header"><i class="game icon"></i><div class="content">Current Gaming Sessions</div></h2></div>
+    <div class="ui attached segment">
+      <%= render 'home/filter_game_sessions' %>
+      <%= render 'home/new_game_button' %>
+    </div>
+    <div class="ui attached segment card-holder">
+      <div class="ui cards game-cards">
+        <%= render 'game_session_cards' %>
+      </div>
+    </div>
 </div>
-<div class="fourteen wide centered row">
-  <h2>Most Played Games</h2>
-  <div class="ui divider"></div>
+<div class="ten wide column">
+  <div class="ui center aligned attached blue segment"><h2 class="ui header">Site News</h2></div>
+  <div class="ui attached segment">
+    <div class="item">
+      Coming soon!
+    </div>
+  </div>
+</div>
+<div class="six wide column">
+  <div class="ui center aligned attached blue segment"><h2 class="ui header">Most Played Games</h2></div>
+  <div class="ui attached segment">
+
+  <div id="most-played" class="ui styled fluid accordion">
+    <% cache do %>
+      <% Game.includes(:game_modes).all.each do |game| %>
+        <div class="title game-title">
+          <i class="dropdown icon"></i>
+          <%= game.title %>
+        </div>
+        <div class="content">
+          <p>Total Plays</p>
+          <% game.game_modes.each do |game_mode| %>
+          <p><%= game_mode.title %>: Plays </p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  </div>
 </div>

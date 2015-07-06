@@ -1,14 +1,21 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $.fn.api.settings.api =
   'get games': '/home/game?game_id={id}'
   'get game modes': '/game_sessions/game_mode'
+  'all games': '/home/all_games'
   
   $('.filter-session').api
     action: 'get games'
+    stateContext: '#filter'
     dataType: 'script'
     on: 'click'
     method: 'GET'
-    #data: game_id: $(".filter-session .item .active .selected").val()
+    
+  $('#all-sessions').api
+    action: 'all games'
+    stateContext: '#filter'
+    dataType: 'script'
+    on: 'click'
+    method: 'GET'
+    
+  $('#most-played').accordion selector: trigger: '.game-title'

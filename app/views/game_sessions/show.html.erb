@@ -5,11 +5,16 @@
     <div class="ui items">
       <div class="item">
         <div class="image">
-          <%= image_tag @game_session.game.game_icon.url %>
+          <%= image_tag @game_session.game.game_icon.url(:medium) %>
         </div>
         
         <div class="content">
           <p class="header"><%= @game_session.game.title + " | " + @game_session.game_mode.title %></p>
+          <% if @game_session.active %>
+            <div class="ui green right ribbon label">Active</div>
+          <% else %>
+            <div class="ui red right ribbon label">Inactive</div>
+          <% end %>
           <div class="meta">
             <span class="players-list">Players:  <%= @total_players %>/<%= @max_players %></span>
             <div class="ui divided list">
@@ -40,17 +45,26 @@
           </div>
           
           <div class="extra">
-            <% if user_signed_in? && @game_session.users.ids.include?(current_user.id)  %>
-              <%= button_to 'Leave', leave_game_path(@game_session), action: "leave_game", class: "tiny right floated ui red button" %>
-            <% else %>
-              <%= button_to 'Join', join_game_path(@game_session) , action: "join_game", class: "tiny right floated ui primary button" %>
-            <% end %>
-            <% if can? :edit, @game_session %>
-              <%= button_to 'Edit', edit_game_session_path(@game_session), method: :get, class: "tiny right floated ui green button" %>
+            <% if @game_session.active %>
+              <% if user_signed_in? && @game_session.users.ids.include?(current_user.id) %>
+                  <% if @game_session.creator != current_user %>
+                    <%= button_to 'Leave Session', leave_game_path(@game_session), action: "leave_game", class: "game-button mini ui right floated primary button" %>
+                  <% end %>
+                <% if can? :destroy, @game_session %>
+                  <%= button_to 'End Session', end_game_path(@game_session), method: :post , class: "game-button mini ui right floated red button" %>
+                <% end %>
+                <% if can? :edit, @game_session %>
+                  <%= button_to 'Edit Session', edit_game_session_path(@game_session), method: :get, class: "game-button mini ui right floated orange button" %>
+                <% end %>
+              <% else %>
+                <%= link_to 'Join Game', join_game_path(@game_session), action: "join_game", method: :post, class: "game-button mini ui right floated primary button" %>
+              <% end %>
             <% end %>
           </div>
+
         </div>
       </div>
     </div>
   </div>
+  
 </div>

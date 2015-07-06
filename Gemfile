@@ -37,7 +37,7 @@ gem 'devise'
 
 gem 'paperclip', '~> 4.2'
 
-gem 'less-rails-semantic_ui'
+gem 'less-rails-semantic_ui', '~> 1.12.3'
 
 gem 'autoprefixer-rails'
 

@@ -32,7 +32,7 @@
           </div>
 
           <div class="extra">
-            <% if can? :edit, User %>
+            <% if can? :edit, @user %>
               <%= link_to 'Edit', edit_user_path(@user), class: "ui right floated button orange" %>
             <% end %>
           </div>

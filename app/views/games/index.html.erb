@@ -1,67 +1,35 @@
-<div class="ui floating message">
-  
-  <p id="notice"><%= notice %></p>
-  
-</div>
-
 <div class="twelve wide centered column">
-  
-  
-  <div class="ui segment">
-    
-    
+  <div class="ui green attached segment">
+    <h2 class="ui header">
+      <i class="game icon"></i>
+      <div class="content">Games</div>
+    </h2>
+  </div>
+  <div class="ui attached segment">
     <div class="ui divided items">
       
-      <div class="item">
-        
-        <%= link_to 'New Game', new_game_path, class:"ui right floated green button" %>
-        
-      </div>
-      
       <% @games.each do |game| %>
-      
       <div class="item">
-        
         <div class="image">
-          
-          <%= image_tag game.game_icon.url %>
-          
+          <%= image_tag game.game_icon.url(:medium) %>
         </div>
         
         <div class="content">
-          
           <h3><%= link_to game.title, game_url(game) %></h3>
-          
           <div class="description">
-            
             <p><%= game.description %></p>
-            
           </div>
           
           <div class="extra">
-            
             <h4>Game Modes:</h4>
-            
             <% game.game_modes.each do |game_mode| %>
-            
-              <div class="ui large teal label"><%= game_mode.title %></div>
-            
+              <div class="ui small teal label"><%= game_mode.title %></div>
             <% end %>
-            
-            <%= link_to 'Edit', edit_game_path(game),class: "ui right floated orange button" %>
-            
-            <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }, class: "ui right floated red button" %>
-            
           </div>
-          
         </div>
-        
       </div>
-      
       <% end %>
       
     </div>
-    
   </div>
-  
 </div>

@@ -5,39 +5,48 @@
       <div class="ui items">
       <div class="item">
         <p class="image">
-          <%= image_tag @game.game_icon.url %>
+          <%= image_tag @game.game_icon.url(:medium) %>
         </p>
         <div class="content">
           <p class="header"><%= @game.title %></p>
           <div class="description">
             <%= @game.description %>
           </div>
-        </div>
-        <div class="extra">
-          <%= button_to 'Edit', edit_game_path(@game), method: "get", class: "ui right floated orange button" %>
+          <div class="extra">
+            <%= button_to 'Edit', edit_game_path(@game), method: "get", class: "ui right floated orange button" %>
+          </div>
         </div>
       </div>
     </div>
   </div>
   
   <div class="seven wide column">
-    <h2>Game Modes</h2>
-    <div class="ui divider"></div>
-    <table class="ui tablet stackable table">
+    <div class="ui green segment">
+      <div class="ui header">
+        Game Modes
+      </div>
+    </div>
+    
+    <table id="game-mode-table" class="ui tablet unstackable attached table">
       <thead>
         <tr>
           <th>Title</th>
           <th>Total Players</th>
-          <th class="right aligned">Actions</th>
+          <th>Total Plays</th>
         </tr>
       </thead>
       <tbody>
         <% @game.game_modes.each do |game_mode| %>
-          <td><%= game_mode.title %></td>
-          <td><%= game_mode.total_players %></td>
-          <td><%= link_to 'Destroy', {}, class: "ui right floated red button" %></td>
+          <tr data-id="<%= game_mode.id %>">
+            <td class="game_mode"><%= game_mode.title %></td>
+            <td class="total_players"><%= game_mode.total_players %></td>
+            <td>SOON</td>
+          </tr>
         <% end %>
       </tbody>
     </table>
+    <div class="ui bottom attached message">
+      
+    </div>
   </div>
 </div>

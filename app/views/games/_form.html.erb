@@ -17,6 +17,10 @@
           </ul>
         </div>
       <% end %>
+      
+      <% if @game.game_icon.exists? %>
+          <%= image_tag @game.game_icon.url(:game_card), class: "ui bordered centered image" %><br />
+      <% end %>
 
       <div class="required field">
         <%= f.label :title %><br>
@@ -25,9 +29,6 @@
 
       <div class="field">
         <%= f.label :game_icon, "Game Icon" %>
-        <% if @game.game_icon.exists? %>
-          <%= image_tag @game.game_icon.url(:medium) %><br />
-        <% end %>
         <%= f.file_field :game_icon %>
       </div>
 
@@ -40,4 +41,6 @@
         <%= f.submit "Submit", class: "ui right floated green button" %>
       </div>
     <% end %>
+    
+    
 </div>

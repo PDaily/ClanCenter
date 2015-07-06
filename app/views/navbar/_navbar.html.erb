@@ -1,11 +1,25 @@
-<div class="ui inverted teal fixed menu">
-  <a id="main-menu" class="item">
-    <i class="sidebar icon"></i>
-      Menu
+<div class="ui inverted teal fluid fixed icon menu">
+  <a id="menu-home" href="/" class="item">
+    <i class="home icon"></i>
   </a>
+  <div id="menu-game" class="ui dropdown item">
+    <i class="game icon"></i>
+    <div class="menu">
+      <a href="/games" class="item">Games</a>
+      <a href="/game_sessions" class="item">Game Sessions</a>
+    </div>
+  </div>
+
   <div class="right menu">
-    <div class="ui dropdown item">
-      <i class="user icon"></i> User <i class="dropdown icon"></i>
+    <a id="menu-msgs" class="item">
+      <i id="messages" class="mail icon"></i>
+    </a>
+    <div id="menu-user" class="ui dropdown item">
+      <% if current_user %>
+        <%= image_tag current_user.avatar.url(:menu), class:"ui avatar menu-avatar image" %>
+      <% else %>
+        <i class="user icon"></i>
+      <% end %>
       <% if current_user.nil? %>
         <%= render "navbar/guest_bar" %>
       <% else current_user %>

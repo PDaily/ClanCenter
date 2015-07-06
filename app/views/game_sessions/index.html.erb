@@ -1,66 +1,139 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Game Sessions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Players</th>
-      <th>Game</th>
-      <th>Game mode</th>
-      <th>Notes</th>
-      <th>Game Date</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @game_sessions.each do |game_session| %>
+<div class="sixteen wide column">
+  <div class="ui blue segment">
+    <h1 class="ui header">
+      <i class="game icon"></i>
+      <div class="content">
+        Game Sessions
+      </div>
+    </h1>
+  </div>
+  
+  <div class="ui green attached segment">
+    <h2 class="ui header">Current Game Sessions</h2>
+  </div>
+  <table class="ui attached stackable compact table">
+    <thead>
       <tr>
-        <td>
-          <% game_session.users.each do |user| %>
-            <%= user.user_name %>
-          <% end %>
-        </td>
-        <td>
-          <%= game_session.game.title.titleize %>
-        </td>
-        <td>
-          <%= game_session.game_mode.title %>
-        </td>
-        <td>
-          <%= game_session.notes %>
-        </td>
-        <td>
-          <%= local_date(game_session.game_date, '%B %e') %>
-        </td>
-        <td>
-          <%= local_time(game_session.start_time, '%l:%M%P') %>
-        </td>
-        <td>
-          <%= local_time(game_session.end_time, '%l:%M%P') %>
-        </td>
-        <td>
-          <% if user_signed_in? %>
-						<% if game_session.users.ids.include?(current_user.id)  %>
-							<%= button_to 'Leave', leave_game_path(game_session), action: "leave_game" %>
-					<% end %>
-            <%= button_to 'Join', join_game_path(game_session), action: "join_game" %>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', game_session %></td>
-        <td>
-          <% if game_session.users.last.id == current_user.id %>
-            <%= link_to 'Edit', edit_game_session_path(game_session) %>
-          <% end %>
-        </td>
+        <th>ID</th>
+        <th>Players</th>
+        <th>Game</th>
+        <th>Game mode</th>
+        <th>Notes</th>
+        <th>Game Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+  
+    <tbody>
+      <% @game_sessions.active.each do |game_session| %>
+        <tr>
+          <td>
+            <div class="ui link list">
+              <a class="item" href="/game_sessions/<%= game_session.id %>">
+                <%= game_session.id %>
+              </a>
+            </div>
+          </td>
+          <td>
+            <div class="ui link list">
+              <% game_session.users.each do |user| %>
+                  <a class="item" href="/users/<%= user.id %>">
+                    <%= user.user_name %>
+                  </a>
+              <% end %>
+            </div>
+          </td>
+          <td>
+            <div class="ui link list">
+              <a class="item" href="/game/<%= game_session.game.id %>">
+                <%= game_session.game.title.titleize %>
+              </a>
+            </div>
+          </td>
+          <td>
+            <%= game_session.game_mode.title %>
+          </td>
+          <td>
+            <%= game_session.notes %>
+          </td>
+          <td>
+            <%= local_date(game_session.game_date, '%B %e') %>
+          </td>
+          <td>
+            <%= local_time(game_session.start_time, '%l:%M%P') %>
+          </td>
+          <td>
+            <%= local_time(game_session.end_time, '%l:%M%P') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <div class="ui divider"></div>
+  
+  <div class="ui red attached segment">
+    <h2 class="ui header">Previous Game Sessions</h2>
+  </div>
+  <table class="ui attached stackable compact table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Players</th>
+        <th>Game</th>
+        <th>Game mode</th>
+        <th>Notes</th>
+        <th>Game Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @game_sessions.inactive.each do |game_session| %>
+        <tr>
+          <td>
+            <div class="ui link list">
+              <a class="item" href="/game_sessions/<%= game_session.id %>">
+                <%= game_session.id %>
+              </a>
+            </div>
+          </td>
+          <td>
+            <div class="ui link list">
+              <% game_session.users.each do |user| %>
+                  <a class="item" href="/users/<%= user.id %>">
+                    <%= user.user_name %>
+                  </a>
+              <% end %>
+            </div>
+          </td>
+          <td>
+            <div class="ui link list">
+              <a class="item" href="/game/<%= game_session.game.id %>">
+                <%= game_session.game.title.titleize %>
+              </a>
+            </div>
+          </td>
+          <td>
+            <%= game_session.game_mode.title %>
+          </td>
+          <td>
+            <%= game_session.notes %>
+          </td>
+          <td>
+            <%= local_date(game_session.game_date, '%B %e') %>
+          </td>
+          <td>
+            <%= local_time(game_session.start_time, '%l:%M%P') %>
+          </td>
+          <td>
+            <%= local_time(game_session.end_time, '%l:%M%P') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
-
-<%= link_to 'New Game session', new_game_session_path %>
+</div>

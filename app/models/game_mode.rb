@@ -4,5 +4,7 @@ class GameMode < ActiveRecord::Base
 
   belongs_to :game
 
-  validates :title, :total_players, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :total_players, presence: true
+  validates :game_id, presence: true, numericality: true
 end

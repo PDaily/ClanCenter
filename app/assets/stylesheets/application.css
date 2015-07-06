@@ -20,6 +20,7 @@
 body {
   background: rgba(218,223,225,0.8);
 }
+
 .ng-session {
   display: inline-block;
 }
@@ -53,9 +54,73 @@ i.footer-heart.heart.icon {
 }
 
 .ui.success.flash.message {
-  margin: 1em 0em 0em 0em;
+  margin: 2em 0em -1em 0em;
 }
 
 .ui.negative.flash.message {
-	margin: 1em 0em 0em 0em;
+  margin: 2em 0em -1em 0em;
+}
+
+.ui.cards.game-cards {
+  margin-left: auto;
+  margin-right: auto;
+  width: 91%;
+}
+
+.ui.inverted.teal.menu {
+  border: 1px solid #0D8E88;
+  border-width: 0 0 4px 1px;
+}
+
+.ui.inverted.menu .item .item > a:not(.ui) {
+  color: rgba(11, 11, 11, 0.5);
+}
+
+.ui.inverted.menu .dropdown .menu .item:hover {
+  background: rgba(0, 0, 0, 0.15) !important;
+}
+
+.ui.inverted.menu .dropdown .menu .item {
+  color: rgba(11, 11, 11, 0.5) !important;
+}
+
+.card-holder {
+  min-height: 25em;
+}
+
+.no-games {
+  margin: auto;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: lightgray !important;
+}
+
+#messages {
+  margin-right: 0em !important;
+}
+
+.ui.header > .icon {
+  padding-top: 0em !important;
+}
+
+i.icon {
+  font-size: 1.2em;
+}
+
+.ui.avatar.image {
+  width: 1.5em !important;
+  height: 1.5em !important;
+  margin-right: 0 !important;
+}
+
+.ui.avatar.game-avatar.image {
+  width: 2.5em !important;
+  height: 2.5em !important;
+}
+
+#menu-user .icon {
+  color: rgb(44, 43, 43);
 }

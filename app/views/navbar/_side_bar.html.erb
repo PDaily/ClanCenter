@@ -1,18 +1,9 @@
 <div class="ui left vertical inverted teal labeled icon sidebar menu" id="side-menu">
-  <a href="/" class="item">
-    <i class="home icon"></i>
-    Home
-  </a>
-  <div class="ui divider"></div>
-  <a class="vertically fitted disabled item">
-    <i class="mail icon"></i>
-    Messages
-  </a>
   <div class="ui divider"></div>
   <% if can? :update, Game %>
   <p class="vertically fitted item">Moderation Tools</p>
   <div class="ui divider"></div>
-  <a class="vertically fitted item">
+  <a href="/games" class="vertically fitted item">
     <i class="game icon"></i>
     Game Settings
   </a>

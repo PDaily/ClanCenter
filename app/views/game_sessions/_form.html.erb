@@ -25,7 +25,7 @@
         
         <div class="required field">
           <%= f.label :game_date %>
-          <div class="four fields">
+          <div class="field">
             <%= f.date_field :game_date, class: "datepicker two fields", required: true, value: Time.now.strftime('%Y-%m-%d') %>
           </div>
         </div>
@@ -48,9 +48,9 @@
         <div class="required field">
           <%= f.label :game %>            
           <%= f.select :game_id, options_for_select(@games.collect { |game|
-                                                     [game.title.titleize, game.id] }, @current_game ), {}, {id: 'games_select', class: ""} %>
+                                                     [game.title.titleize, game.id] }, @current_game ), {}, {id: 'games_select'} %>
         </div>
-         <% #TODO Fix semantic-ui dropdown to properly refresh dropdown text after pulling gamemodes %>
+         
         <div class="required field">
           <%= f.label :game_mode_id, "Game Mode" %>
           <%= f.select :game_mode_id, options_for_select(@game_modes.collect { |game_mode|

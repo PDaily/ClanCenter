@@ -39,6 +39,7 @@ class GameSessionsController < ApplicationController
   # POST /game_sessions.json
   def create
     @game_session = GameSession.new(game_session_params)
+    @game_session.active = true
     @game_session.creator = current_user
 
     respond_to do |format|
@@ -85,26 +86,27 @@ class GameSessionsController < ApplicationController
       format.js
     end
   end
+  
+  def end_game
+    @game_session.update_attribute(:active, false)
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: 'Game session has successfully ended.' }
+    end
+  end
 
   def join_game
     @game_session.users << current_user
+    GameSessionMailer.join_game_session_email(@game_session, current_user).deliver_now
     respond_to do |format|
       format.html { redirect_to @game_session, notice: 'Successfully joined game session!' }
     end
   end
 
   def leave_game
-    @game_session.users.delete(current_user)
-    if @game_session.users.empty?
-      @game_session.destroy
-      respond_to do |format|
-        format.html { redirect_to root_url, notice: 'Successfully quit game session! No more users- game session deleted!' }
-      end
-    else
+    @game_session.users.delete(current_user) unless current_user == @game_session.creator
       respond_to do |format|
         format.html { redirect_to root_url, notice: 'Successfully quit game session!' }
       end
-    end
   end
 
   private

@@ -27,3 +27,8 @@
 
 # Ignore .env
 .env
+
+# Ignore /public/system
+/public/system/
+
+# Ignore /public/images/
