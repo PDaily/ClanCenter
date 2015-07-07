@@ -1,4 +1,4 @@
-@import 'rails_admin/bootstrap/variables';
+@import 'rails_admin/custom/variables';
 @import 'rails_admin/custom/variables';
 @import 'rails_admin/bootstrap/mixins';
 
@@ -13,7 +13,7 @@
 @import url(https://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic);
 
 h1 {
-  font-size: 48px;
+  font-size: 35px;
   font-weight: 900;
 }
 
@@ -660,10 +660,7 @@ legend {
   }
 }
 
-@media (max-width: $minBodyWidth - 1) {
-  body.rails_admin { min-width: $minBodyWidth }
-  .navbar-inner{ min-width: $minNavbarWidth }
-}
+
 
 //  OTHER RULES
 body.rails_admin { padding-top: $navbarHeight + 20 }
