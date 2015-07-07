@@ -121,6 +121,10 @@ i.icon {
   height: 2.5em !important;
 }
 
-#menu-user .icon {
-  color: rgb(44, 43, 43);
+.menu-user .icon {
+  color: rgb(44, 43, 43) !important;
+}
+
+.ten.wide.centered.column.login {
+  margin-top: 1em !important;
 }

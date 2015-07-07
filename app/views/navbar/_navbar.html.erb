@@ -14,7 +14,7 @@
     <a id="menu-msgs" class="item">
       <i id="messages" class="mail icon"></i>
     </a>
-    <div id="menu-user" class="ui dropdown item">
+    <div class="ui dropdown item">
       <% if current_user %>
         <%= image_tag current_user.avatar.url(:menu), class:"ui avatar menu-avatar image" %>
       <% else %>

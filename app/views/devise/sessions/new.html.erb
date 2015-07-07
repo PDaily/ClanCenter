@@ -1,4 +1,4 @@
-<div class="ten wide centered column">
+<div class="ten wide centered column login">
   <div class="ui attached message">
       <div class="header">
         Log-in
@@ -17,14 +17,14 @@
     </div>
 
     <% if devise_mapping.rememberable? -%>
-      <div class="field">
+      <div class="ui field slider checkbox">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
     <% end -%>
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log in", class: "ui green right floated button" %>
     </div>
   <% end %>
   <div class="ui bottom attached warning message">
