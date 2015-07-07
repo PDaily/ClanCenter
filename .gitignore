@@ -31,4 +31,5 @@
 # Ignore /public/system
 /public/system/
 
-# Ignore /public/images/
+# Ignore sidekiq dump
+dump.rdb
