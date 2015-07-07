@@ -61,6 +61,8 @@ gem 'rollbar', '~> 1.5.3'
 
 gem 'sidekiq'
 
+gem 'sinatra', :require => nil
+
 group :development do
   
   gem 'quiet_assets'
