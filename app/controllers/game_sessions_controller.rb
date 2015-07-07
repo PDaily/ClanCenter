@@ -47,9 +47,9 @@ class GameSessionsController < ApplicationController
         format.html { redirect_to @game_session, notice: 'Game session was successfully created.' }
         format.json { render :show, status: :created, location: @game_session }
         @game_session.users << current_user
-        
-        CleanupGamesessionsJob.perform_later
-        GameSessionMailer.new_game_session_email(@game_session, current_user).deliver_now
+
+        CleanupGameSessionsWorker.perform_in(@game_session.end_time + 1.hour, @game_session.id )
+        GameSessionMailer.new_game_session_email(@game_session, current_user).deliver_later!(wait: 5.minutes)
       else
         format.html { render :new }
         format.json { render json: @game_session.errors, status: :unprocessable_entity }
@@ -97,7 +97,7 @@ class GameSessionsController < ApplicationController
 
   def join_game
     @game_session.users << current_user
-    GameSessionMailer.join_game_session_email(@game_session, current_user).deliver_now
+    GameSessionMailer.join_game_session_email(@game_session, current_user).deliver_later!(wait: 5.minutes)
     respond_to do |format|
       format.html { redirect_to @game_session, notice: 'Successfully joined game session!' }
     end
@@ -105,9 +105,9 @@ class GameSessionsController < ApplicationController
 
   def leave_game
     @game_session.users.delete(current_user) unless current_user == @game_session.creator
-      respond_to do |format|
-        format.html { redirect_to root_url, notice: 'Successfully quit game session!' }
-      end
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: 'Successfully quit game session!' }
+    end
   end
 
   private
