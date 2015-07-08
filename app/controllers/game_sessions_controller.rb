@@ -7,7 +7,7 @@ class GameSessionsController < ApplicationController
 	# GET /game_sessions
 	# GET /game_sessions.json
 	def index
-		@game_sessions = GameSession.includes(:users, :game, :game_mode)
+		@game_sessions = GameSession.includes(:creator, :users, :game, :game_mode)
  	end
 
   # GET /game_sessions/1
@@ -47,6 +47,8 @@ class GameSessionsController < ApplicationController
         format.html { redirect_to @game_session, notice: 'Game session was successfully created.' }
         format.json { render :show, status: :created, location: @game_session }
         @game_session.users << current_user
+        @game_session.game.increment!(:play_count, 1)
+        @game_session.game_mode.increment!(:play_count, 1)
 
         CleanupGameSessionsWorker.perform_in(@game_session.end_time + 1.hour, @game_session.id )
         GameSessionMailer.new_game_session_email(@game_session, current_user).deliver_later!(wait: 5.minutes)

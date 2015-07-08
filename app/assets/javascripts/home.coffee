@@ -1,4 +1,5 @@
 $ ->
+  $.fn.api.settings.debug = false
   $.fn.api.settings.api =
   'get games': '/home/game?game_id={id}'
   'get game modes': '/game_sessions/game_mode'

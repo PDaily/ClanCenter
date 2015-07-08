@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708162734) do
+ActiveRecord::Schema.define(version: 20150708182148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20150708162734) do
     t.string   "title"
     t.integer  "total_players"
     t.integer  "game_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "play_count",    default: 0
   end
 
   add_index "game_modes", ["game_id"], name: "index_game_modes_on_game_id", using: :btree
@@ -53,12 +54,13 @@ ActiveRecord::Schema.define(version: 20150708162734) do
   create_table "games", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "game_icon_file_name"
     t.string   "game_icon_content_type"
     t.integer  "game_icon_file_size"
     t.datetime "game_icon_updated_at"
+    t.integer  "play_count",             default: 0
   end
 
   create_table "roles", force: :cascade do |t|

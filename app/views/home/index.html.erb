@@ -30,9 +30,9 @@
           <%= game.title %>
         </div>
         <div class="content">
-          <p>Total Plays</p>
+          <p>Game: <%= game.play_count %> Plays</p>
           <% game.game_modes.each do |game_mode| %>
-          <p><%= game_mode.title %>: Plays </p>
+          <p><%= game_mode.title %>: <%= game_mode.play_count || 0 %> Plays </p>
           <% end %>
         </div>
       <% end %>

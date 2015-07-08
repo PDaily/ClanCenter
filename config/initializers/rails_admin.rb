@@ -37,7 +37,7 @@ RailsAdmin.config do |config|
     redirect_to main_app.root_path unless current_user.has_role?(:admin) || current_user.has_role?(:mod)
   end
   
-  #config.model "Role" do
-  #  visible false
-  #end
+  config.model "Role" do
+    visible false
+  end
 end

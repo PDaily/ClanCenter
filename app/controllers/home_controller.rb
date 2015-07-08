@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 	load_resource :game_session
   def index
 		authorize! :edit, GameSession
-    @game_sessions = GameSession.includes(:users, :game, :game_mode).active
+    @game_sessions = GameSession.includes(:creator, :users, :game, :game_mode).active
   end
   
   def all_games
