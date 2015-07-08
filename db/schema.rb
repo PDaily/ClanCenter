@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705180656) do
+ActiveRecord::Schema.define(version: 20150708162734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,24 +61,20 @@ ActiveRecord::Schema.define(version: 20150705180656) do
     t.datetime "game_icon_updated_at"
   end
 
-  create_table "royce_connector", force: :cascade do |t|
-    t.integer  "roleable_id",   null: false
-    t.string   "roleable_type", null: false
-    t.integer  "role_id",       null: false
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "royce_connector", ["role_id"], name: "index_royce_connector_on_role_id", using: :btree
-  add_index "royce_connector", ["roleable_id", "roleable_type"], name: "index_royce_connector_on_roleable_id_and_roleable_type", using: :btree
-
-  create_table "royce_role", force: :cascade do |t|
-    t.string   "name",       null: false
+  create_table "user_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "royce_role", ["name"], name: "index_royce_role_on_name", using: :btree
+  add_index "user_roles", ["user_id", "role_id"], name: "index_user_roles_on_user_id_and_role_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"

@@ -4,11 +4,11 @@ class Ability
   def initialize(user) 
 		user ||= User.new # guest user if not signed in.
 
-		if user.admin? 
+		if user.has_role?(:admin) 
       can :manage, :all
       can :access, :rails_admin   # grant access to rails_admin
 			can :dashboard
-		elsif user.mod?
+		elsif user.has_role?(:mod)
 			can :manage, [ GameSession, Game, GameMode ]
 			can :read, :all
 			can :access, :rails_admin   # grant access to rails_admin

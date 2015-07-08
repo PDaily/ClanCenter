@@ -31,9 +31,13 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.included_models = %w(Game GameMode GameSession User)
+  config.included_models = %w(Game GameMode GameSession User Ability)
   
   config.authorize_with do
-    redirect_to main_app.root_path unless current_user.admin? || current_user.mod?
+    redirect_to main_app.root_path unless current_user.has_role?(:admin) || current_user.has_role?(:mod)
   end
+  
+  #config.model "Role" do
+  #  visible false
+  #end
 end

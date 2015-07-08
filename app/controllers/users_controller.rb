@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-		@user.add_role :user
+		#@user.add_role :user
 
     respond_to do |format|
       if @user.save

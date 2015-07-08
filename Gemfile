@@ -49,8 +49,6 @@ gem 'rails_12factor', group: :production
 
 gem 'stackprof'
 
-gem 'royce'
-
 gem 'cancancan', '~> 1.10'
 
 gem 'jquery-turbolinks'

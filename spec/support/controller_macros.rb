@@ -5,7 +5,8 @@ module ControllerMacros
     before(:each) do
       @request.env['devise.mapping'] = Devise.mappings[:user]
       user = FactoryGirl.create(:user)
-			user.admin!
+			admin_role = Role.create!(name: "admin")
+			user.roles << admin_role
       sign_in user
     end
   end
