@@ -40,4 +40,12 @@ RailsAdmin.config do |config|
   config.model "Role" do
     visible false
   end
+  
+  config.model "SiteNews" do
+    edit do
+      field :title
+      field :body, :ck_editor
+      field :user
+    end
+  end
 end

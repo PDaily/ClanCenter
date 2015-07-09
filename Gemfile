@@ -63,6 +63,8 @@ gem 'sinatra', :require => nil
 
 gem 'mailboxer'
 
+gem 'ckeditor'
+
 group :development do
   
   gem 'quiet_assets'
