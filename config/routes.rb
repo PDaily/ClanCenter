@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :site_news
+
   # Sideqik Web Monitoring Panel Route
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.has_role?(:admin) } do
@@ -30,6 +32,10 @@ Rails.application.routes.draw do
   
   # Users Routes
   resources :users
+  
+  # Mailboxer Messages
+  resources :messages
+  resources :conversations
   
   # Root Route
   root 'home#index'

@@ -61,6 +61,8 @@ gem 'sidekiq'
 
 gem 'sinatra', :require => nil
 
+gem 'mailboxer'
+
 group :development do
   
   gem 'quiet_assets'

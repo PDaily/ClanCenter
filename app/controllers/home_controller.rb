@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def index
 		authorize! :edit, GameSession
     @game_sessions = GameSession.includes(:creator, :users, :game, :game_mode).active
+    @site_news = SiteNews.includes(:user)
   end
   
   def all_games

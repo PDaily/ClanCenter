@@ -128,3 +128,7 @@ i.icon {
 .ten.wide.centered.column.login {
   margin-top: 1em !important;
 }
+
+.news {
+  min-height: 25em;
+}

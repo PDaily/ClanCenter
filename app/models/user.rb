@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # Mailboxer messaging
+  acts_as_messageable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,6 +13,8 @@ class User < ActiveRecord::Base
   # Set up roles
   has_many :user_roles, :dependent => :destroy
   has_many :roles, :through => :user_roles
+  
+  has_many :site_news
 
   validates :email, :user_name, :time_zone, presence: true
   validates :password, presence: true, length: { minimum: 5, maximum: 120 }, on: :create
