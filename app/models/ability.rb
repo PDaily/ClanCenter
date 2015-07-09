@@ -12,7 +12,9 @@ class Ability
 			can :manage, [ GameSession, Game, GameMode ]
 			can :read, :all
 			can :access, :rails_admin   # grant access to rails_admin
-			can :dashboard
+			can :new, [Game, GameMode, GameSession]           # included in :create
+			can :export, [Game, GameMode, GameSession]
+			can :destroy, [Game, GameMode, GameSession]       # for BulkDelete
 		end
       can :read, [ GameSession, Game, User ]
 			can [:destroy, :edit], GameSession, :creator_id => user.id # manage owned gamesessions

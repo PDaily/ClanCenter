@@ -5,7 +5,7 @@
   <div class="item">
   <i class="sign out icon"></i> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
   </div>
-  <% if can? :dashboard, :rails_admin %>
+  <% if can? :access, :rails_admin %>
   <div class="item">
     <i class="dashboard icon"></i> <a href="/admin">Admin</a>
   </div>
