@@ -1,19 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="sixteen wide column">
+  <div class="ui teal attached segment"><h2 class="ui header"><i class="newspaper icon"></i><div class="content"><%= @site_news.title %></div></h2></div>
+    <div class="ui attached segment">
 
-<p>
-  <strong>Title:</strong>
-  <%= @site_news.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @site_news.body %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @site_news.user %>
-</p>
-
-<%= link_to 'Edit', edit_site_news_path(@site_news) %> |
-<%= link_to 'Back', site_news_index_path %>
+        <div class="item">
+          <div class="content">
+            <p>Author: <a href="/users/<%= @site_news.user.id %>"><%= @site_news.user.user_name %></a></p>
+            <p>Published Date: <%= @site_news.created_at.strftime('%D') %></p>
+            <div class="ui clearing divider"></div>
+            <div class="description">
+              <p><%= @site_news.body.html_safe %></p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
