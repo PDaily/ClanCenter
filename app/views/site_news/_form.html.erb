@@ -1,9 +1,11 @@
-<%= form_for(@site_news) do |f| %>
+<%= form_for @site_news, html: {class: "ui form attached fluid segment"} do |f| %>
   <% if @site_news.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@site_news.errors.count, "error") %> prohibited this site_news from being saved:</h2>
+    <div id="error_explanation" class="ui visible error message">
+      <div class="header">
+        <%= pluralize(@site_news.errors.count, "error") %> prohibited this user from being saved:
+      </div>
 
-      <ul>
+      <ul class="list">
       <% @site_news.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -11,19 +13,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  
+  <div class="required field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
+  <div class="required field">
     <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= f.cktext_area :body, value: @site_news.body || 'Drop some news on me!' %>
   </div>
-  <div class="field">
-    <%= f.label :belongs_to %><br>
-    <%= f.text_field :belongs_to %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <%= f.submit "Go!", class: "ui green button" %>
+
+<% end %>
+<% if @edit_site_news_page %>
+  <div class="ui bottom attached negative message">
+    <i class="icon ban"></i>
+    Want to close your account? <%= link_to "Click here!", @site_news, method: :delete, data: { confirm: "Are you sure? This is irreversible!" } %>
   </div>
 <% end %>

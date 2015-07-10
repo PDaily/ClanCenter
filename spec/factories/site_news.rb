@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :site_news do
-    title "MyString"
-body "MyText"
-belongs_to ""
+    title "Test News Post"
+    body "This is an amazing post! I literally cant!"
+    user
   end
 
 end

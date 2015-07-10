@@ -25,7 +25,8 @@ class SiteNewsController < ApplicationController
   # POST /site_news.json
   def create
     @site_news = SiteNews.new(site_news_params)
-
+    @site_news.user = current_user
+    
     respond_to do |format|
       if @site_news.save
         format.html { redirect_to @site_news, notice: 'Site news was successfully created.' }
@@ -69,6 +70,6 @@ class SiteNewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_news_params
-      params.require(:site_news).permit(:title, :body, :belongs_to)
+      params.require(:site_news).permit(:title, :body, :user)
     end
 end
