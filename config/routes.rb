@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :site_news
+  resources :site_news, path: 'news'
 
   # Sideqik Web Monitoring Panel Route
   require 'sidekiq/web'
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'game_sessions/:id/leave_game', to: 'game_sessions#leave_game', as: 'leave_game'
   post 'game_sessions/:id/end_game', to: 'game_sessions#end_game', as: 'end_game'
   
-  resources :game_sessions
+  resources :game_sessions, path: 'gamesessions'
   # Home Routes
   get 'home/index'
   get 'home/all_games', to: 'home#all_games', as: 'all_games'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'home/game_mode', to: 'home#sort_by_game_mode', as: 'sort_by_game_mode'
   
   # Devise Routes
-  devise_for :users, :controllers => { :registrations => "user/registrations" }
+  devise_for :users, controllers: { registrations: "user/registrations" }, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
   
   # Games Routes
   resources :games
