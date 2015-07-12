@@ -7,7 +7,7 @@ $ ->
     transition: 'slide down'
     onChange: () ->
       $(document).on 'change', '#games_select', (evt) ->
-        $.ajax '/game_sessions/update_games',
+        $.ajax '/gamesessions/update_games',
         type: 'GET'
         dataType: 'script'
         data: {
