@@ -1,18 +1,32 @@
-<div id="filter" class="ui floating labeled icon dropdown button">
-  <i class="filter icon"></i>
-  <span class="text">Filter</span>
+<div id="time-filter" class="ui floating labeled icon dropdown start-time-filter button">
+  <i class="clock icon"></i>
+  <span class="default text">Start Time <i class="angle double down icon"></i></span>
   <div class="menu">
     <div class="header">
-      <i class="tags icon"></i>
-      Filter by Game
+      <i class="clock icon"></i>
+      Filter by Start Time
     </div>
-    <div id="all-sessions" class="item">All Games</div>
-    <% cache do %>
-      <% Game.all.each do |game| %>
-        <div class="item filter-session" data-id="<%= game.id %>">
-          <%= image_tag game.game_icon.url(:thumb), class: "ui mini circular image" %><%= game.title %>
-        </div>
-      <% end %>
-    <% end %>
+    <div class="item" data-time="start_time_desc">
+      Start Time <i class="angle double down icon"></i>
+    </div>
+    <div class="item" data-time="start_time_asc">
+      Start Time <i class="angle double up icon"></i>
+    </div>
   </div>
+</div>
+
+<select id="game-filter" name="games" multiple="" class="ui selection dropdown game-filter">
+  <option value="">Games</option>
+  <% cache do %>
+    <% Game.all.each do |game| %>
+      <option class="filter-session" value="<%= game.id %>" data-game-id="<%= game.id %>">
+        <%= game.title %>
+      </option>
+    <% end %>
+  <% end %>
+</select>
+
+<div class="ui buttons filter-actions-holder">
+  <button id="filter" class="ui compact icon teal button filter-actions"><i class="search icon"></i></button>
+  <button id="clear-filter" class="ui compact icon orange button filter-actions"><i class="undo icon"></i></button>
 </div>

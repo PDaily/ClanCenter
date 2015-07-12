@@ -37,7 +37,7 @@ gem 'devise'
 
 gem 'paperclip', '~> 4.2'
 
-gem 'less-rails-semantic_ui', '~> 1.12.3'
+gem 'less-rails-semantic_ui', '~> 2.0.2.0'
 
 gem 'autoprefixer-rails'
 
@@ -64,6 +64,8 @@ gem 'sinatra', :require => nil
 gem 'mailboxer'
 
 gem 'ckeditor'
+
+gem 'kaminari'
 
 group :development do
   

@@ -11,11 +11,11 @@
             <p>Published Date: <%= news.created_at.strftime('%D') %></p>
             <div class="ui clearing divider"></div>
             <div class="description">
-              <p><%= truncate(news.body, length: 1000) %></p>
+              <p><%= raw news.body %></p>
             </div>
             <div class="extra">
-              <a class="ui animated right floated button" href="/site_news/<%= news.id %>">
-                <div class="visible content">Read More</div>
+              <a class="ui animated right floated button" href="/news/<%= news.id %>">
+                <div class="visible content">View Post</div>
                 <div class="hidden content">
                   <i class="right arrow icon"></i>
                 </div>

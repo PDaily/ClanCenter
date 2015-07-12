@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require semantic_ui/semantic_ui
+ *= require media_queries
  *= require home
  *= require game_sessions
  *= require games
@@ -131,4 +132,12 @@ i.icon {
 
 .news {
   min-height: 25em;
+}
+
+.ui.center.aligned.attached.fluid.segment.pagninator {
+    border: 0px;
+}
+
+.ui.icon.menu .item {
+  text-align: left !important;
 }

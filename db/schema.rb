@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709040619) do
+ActiveRecord::Schema.define(version: 20150711194211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,13 +31,14 @@ ActiveRecord::Schema.define(version: 20150709040619) do
     t.string   "notes"
     t.integer  "game_id"
     t.integer  "game_mode_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.date     "game_date"
     t.integer  "creator_id"
     t.boolean  "active"
+    t.integer  "users_count",  default: 0
   end
 
   add_index "game_sessions", ["game_id"], name: "index_game_sessions_on_game_id", using: :btree

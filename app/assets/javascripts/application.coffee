@@ -22,19 +22,27 @@ ready = ->
   $('#menu-home').popup({
     content: "Go Home!"
     })
+    .click ->
+      $(this).popup 'remove popup'
     
   $('#menu-game').popup({
     content: "Game Pages"
     })
-    
+    .click ->
+      $(this).popup 'remove popup'
+      
   $('#menu-msgs').popup({
     content: "Messages"
     })
-    
+    .click ->
+      $(this).popup 'remove popup'
+      
   $('#menu-user').popup({
     content: "User Menu"
     position: "bottom right"
     })
-
+    .click ->
+      $(this).popup 'remove popup'
+      
 $(document).ready ready
 

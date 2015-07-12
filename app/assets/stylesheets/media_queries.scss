@@ -1,0 +1,98 @@
+/* Breakpoints */
+$mobileBreakpoint            : 320px;
+$tabletBreakpoint            : 768px;
+$computerBreakpoint          : 992px;
+$largeMonitorBreakpoint      : 1400px;
+$widescreenMonitorBreakpoint : 1900px;
+
+/* Responsive */
+$largestMobileScreen : ($tabletBreakpoint - 1px);
+$largestTabletScreen : ($computerBreakpoint - 1px);
+$largestSmallMonitor : ($largeMonitorBreakpoint - 1px);
+$largestLargeMonitor : ($widescreenMonitorBreakpoint - 1px);
+
+@media only screen and (max-width: ($largestMobileScreen)) {
+ .ng-button {
+    float: none;
+    display: block;
+    width: 100%;
+    min-width: 0em
+  }
+ .game-filter {
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+    display: block;
+    width: 100%;
+    min-width: 0em
+  }
+  .start-time-filter {
+    display: block;
+    width: 100%;
+    min-width: 0em
+  }
+ .filter-actions {
+    margin-bottom: 0.5em !important;
+  }
+  .filter-actions-holder {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    width: 100%;
+  }
+ .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: $tabletBreakpoint ) {
+ .ng-button {
+    float: right;
+  }
+  .ui.cards > .card {
+    margin: 0.875em 0.8em !important;
+  }
+  .ui.cards.game-cards {
+    width: 100% !important;
+  }
+  .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: $computerBreakpoint) {
+ .ng-button {
+   float: right;
+  }
+  .ui.cards > .card {
+    margin: 0.875em 0.3em !important;
+  }
+  .ui.cards.game-cards {
+    width: 90% !important
+  }
+  .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: $largeMonitorBreakpoint) {
+ .ng-button {
+   float: right;
+ }
+ .ui.cards > .card {
+    margin: 0.875em 0.3em !important;
+  }
+  .ui.cards.game-cards {
+    width: 90% !important;
+  }
+  .game-button {
+    float: right;
+  }
+}
+@media only screen and (min-width: $widescreenMonitorBreakpoint) {
+ .ng-button {
+   float: right;
+ }
+  .game-button {
+    float: right;
+  }
+}

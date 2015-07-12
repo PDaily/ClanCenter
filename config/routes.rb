@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   # Home Routes
   get 'home/index'
   get 'home/all_games', to: 'home#all_games', as: 'all_games'
-  get 'home/game', to: 'home#sort_by_game', as: 'sort_by_game'
-  get 'home/game_mode', to: 'home#sort_by_game_mode', as: 'sort_by_game_mode'
+  get 'home/sort', to: 'home#sort', as: 'sort'
+  get 'home/search', to: 'home#search', as: 'search'
   
   # Devise Routes
   devise_for :users, controllers: { registrations: "user/registrations" }, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'signup'}
