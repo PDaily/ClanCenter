@@ -8,7 +8,7 @@ class GameSession < ActiveRecord::Base
   
   paginates_per 8
 
-  #default_scope { where(active: true) }
+  default_scope { where(active: true) }
   
   scope :sorted_by, lambda { |sort_option|
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
