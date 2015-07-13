@@ -4,6 +4,7 @@
 #= require semantic_ui/semantic_ui
 #= require turbolinks
 #= require local_time
+#= require table-sort
 #= require home
 #= require users
 #= require game_sessions
