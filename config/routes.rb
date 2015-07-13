@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   # Game Sessions Routes
-  get 'gamesessions/update_games', as: 'update_games'
+  get 'gamesessions/update_games', to: 'game_sessions#update_games', as: 'update_games'
   post 'gamesessions/:id/join_game', to: 'game_sessions#join_game', as: 'join_game'
   post 'gamesessions/:id/leave_game', to: 'game_sessions#leave_game', as: 'leave_game'
   post 'gamesessions/:id/end_game', to: 'game_sessions#end_game', as: 'end_game'
