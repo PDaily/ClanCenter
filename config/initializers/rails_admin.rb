@@ -53,5 +53,29 @@ RailsAdmin.config do |config|
     object_label_method do
       :user_name
     end
+    edit do
+      field :user_name
+      field :email
+      field :password
+      field :password_confirmation
+      field :reset_password_sent_at, :datetime
+      field :remember_created_at, :datetime
+      field :sign_in_count
+      field :current_sign_in_at
+      field :last_sign_in_at
+      field :current_sign_in_ip
+      field :last_sign_in_ip
+      field :time_zone
+      field :xbox_name
+      field :steam_name
+      field :twitch_name
+      field :avatar
+      field :game_sessions
+      field :role do
+        visible do
+          bindings[:view]._current_user.has_role?(:admin)
+        end
+      end
+    end
   end
 end
