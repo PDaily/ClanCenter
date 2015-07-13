@@ -23,7 +23,7 @@ class GameSession < ActiveRecord::Base
   
   scope :game_id, lambda { |game_ids| where(game_id: [*game_ids]) }
   
-  scope :active, -> (active) { where(active: active) }
+  scope :inactive, -> { where(active: false) }
 
   validates :creator_id, :game_id, :game_mode_id, :game_date, :start_time, :end_time, :notes, presence: true
 end
