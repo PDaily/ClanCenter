@@ -48,4 +48,10 @@ RailsAdmin.config do |config|
       field :user
     end
   end
+  
+  config.model "User" do
+    object_label_method do
+      :user_name
+    end
+  end
 end
