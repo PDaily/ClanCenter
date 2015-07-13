@@ -157,3 +157,7 @@ i.icon {
 .pagination.menu a {
     color: #000;
 }
+
+.players-list {
+  margin-left: -6em;
+}

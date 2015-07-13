@@ -1,21 +1,21 @@
-<p id="notice"><%= notice %></p>
-
 <div class="twelve wide centered column">
   <div class="ui segment">
     <div class="ui items">
       <div class="item">
+
         <div class="image">
           <%= image_tag @game_session.game.game_icon.url(:medium) %>
         </div>
         
         <div class="content">
           <p class="header"><%= @game_session.game.title + " | " + @game_session.game_mode.title %></p>
-          <% if @game_session.active %>
-            <div class="ui green right ribbon label">Active</div>
-          <% else %>
-            <div class="ui red right ribbon label">Inactive</div>
-          <% end %>
+
           <div class="meta">
+            <% if @game_session.active %>
+              <div class="ui green right ribbon label">Active</div>
+            <% else %>
+              <div class="ui red right ribbon label">Inactive</div>
+            <% end %>
             <span class="players-list">Players:  <%= @total_players %>/<%= @max_players %></span>
             <div class="ui divided list">
             <% @game_session.users.each do |user| %>
@@ -42,6 +42,7 @@
             <p><strong>End Time:</strong>
               <%= local_time(@game_session.end_time, '%l:%M%P') %>
             </p>
+            
           </div>
           
           <div class="extra">
