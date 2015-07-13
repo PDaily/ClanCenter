@@ -6,12 +6,12 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "ui form attached fluid segment"}) do |f| %>
-    <div class="field">
+    <div class="required field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
     </div>
 
-    <div class="field">
+    <div class="required field">
       <%= f.label :password %><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>

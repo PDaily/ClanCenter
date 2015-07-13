@@ -11,7 +11,7 @@
   <div class="ui green attached segment">
     <h2 class="ui header">Current Game Sessions</h2>
   </div>
-  <table class="ui attached stackable compact table">
+  <table class="ui attached sortable stackable compact table">
     <thead>
       <tr>
         <th>ID</th>
@@ -26,7 +26,7 @@
     </thead>
   
     <tbody>
-      <% @game_sessions.active.each do |game_session| %>
+      <% @game_sessions.each do |game_session| %>
         <tr>
           <td>
             <div class="ui link list">
@@ -76,7 +76,7 @@
   <div class="ui red attached segment">
     <h2 class="ui header">Previous Game Sessions</h2>
   </div>
-  <table class="ui attached stackable compact table">
+  <table class="ui attached sortable stackable compact table">
     <thead>
       <tr>
         <th>ID</th>

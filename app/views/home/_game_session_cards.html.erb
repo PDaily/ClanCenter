@@ -21,7 +21,7 @@
             <div class="item">
               <%= image_tag user.avatar.url, class: "ui avatar game-avatar image" %>
               <div class="content">
-                <div class="header"><%= link_to user.user_name, user_path(user) %></div>
+                <div class="header"><%= link_to user.user_name, user_path(user), class: "user-name" %></div>
               </div>
             </div>
             <% end %>

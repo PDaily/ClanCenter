@@ -141,3 +141,19 @@ i.icon {
 .ui.icon.menu .item {
   text-align: left !important;
 }
+
+.time-select {
+  min-width: 9em !important;  
+}
+
+.game-session-form {
+  padding-bottom: 3.5em !important;
+}
+
+.user-name {
+  color: #000;
+}
+
+.pagination.menu a {
+    color: #000;
+}
