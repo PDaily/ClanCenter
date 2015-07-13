@@ -18,3 +18,5 @@ $ ->
     success: () ->
       text = $("#game_mode_select option:selected").text()
       $('#game_mode_select').dropdown('set text', text)
+      
+  $('table').tablesort()
