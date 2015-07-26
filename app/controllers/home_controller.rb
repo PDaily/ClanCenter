@@ -5,13 +5,13 @@ class HomeController < ApplicationController
     authorize! :edit, GameSession
     @game_sessions = GameSession.includes(:creator, :users, :game, :game_mode).filter(params.slice(:game_id, :game_mode_id, :sorted_by)).page params[:page]
     session[:game_sessions] = @game_sessions.to_param
-    @site_news = SiteNews.includes(:user)
+    @site_news = SiteNews.includes(:user).limit(5).order(created_at: :desc)
     respond_to do |format|
       format.html
       format.js
     end
   end
-  
+
   def all_games
     @game_sessions = GameSession.includes(:users, :game, :game_mode).page params[:page]
     session[:game_sessions] = @game_sessions.to_param
