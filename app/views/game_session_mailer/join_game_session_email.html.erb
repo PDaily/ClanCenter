@@ -1,12 +1,12 @@
 <h2><%= @user %> has joined your game!</h2>
 
-<strong><%= @game_session_title %></strong></br>
+<strong><%= @game_session_title %></strong>
 
-<strong>Creator:</strong><p><%= @user_name %></p></br>
+<p><strong>Creator:</strong><%= @creator %></p>
+<p><strong>Start Time:</strong><%= @start_time %></p>
+<p><strong>End Time:</strong><%= @end_time %></p>
 
 <strong>Notes:</strong><p><%= @game_session_notes %></p></br>
-<strong>Start Time:</strong><p><%= @start_time %></p></br>
-<strong>Notes:</strong><p><%= @end_time %></p></br>
 
 <p>Click <%= link_to "here", game_session_url(@game_session) %> to go to the game session!</p>
 
