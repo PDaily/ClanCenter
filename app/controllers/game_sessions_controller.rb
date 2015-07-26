@@ -3,7 +3,7 @@ class GameSessionsController < ApplicationController
   before_action :set_game_session, only: [:show, :edit, :update, :destroy, :join_game, :leave_game]
   before_action :authenticate_user!, only: [:edit, :new, :create, :join_game, :update, :destroy]
 	load_and_authorize_resource
-	
+
 	# GET /game_sessions
 	# GET /game_sessions.json
 	def index
@@ -51,7 +51,7 @@ class GameSessionsController < ApplicationController
         @game_session.game_mode.increment!(:play_count, 1)
 
         CleanupGameSessionsWorker.perform_in(@game_session.end_time + 1.hour, @game_session.id )
-        GameSessionMailer.delay_for(5.minutes).new_game_session_email(@game_session, current_user)
+        GameSessionMailer.delay_for(1.minutes).new_game_session_email(@game_session, current_user)
       else
         format.html { render :new }
         format.json { render json: @game_session.errors, status: :unprocessable_entity }
@@ -89,7 +89,7 @@ class GameSessionsController < ApplicationController
       format.js
     end
   end
-  
+
   def end_game
     @game_session.update_attribute(:active, false)
     respond_to do |format|
@@ -99,7 +99,7 @@ class GameSessionsController < ApplicationController
 
   def join_game
     @game_session.users << current_user
-    GameSessionMailer.delay_for(5.minutes).join_game_session_email(@game_session, current_user)
+    GameSessionMailer.delay_for(1.minutes).join_game_session_email(@game_session, current_user)
     respond_to do |format|
       format.html { redirect_to @game_session, notice: 'Successfully joined game session!' }
     end
