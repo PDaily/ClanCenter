@@ -27,17 +27,17 @@
             <% end %>
           </div>
         </div>
-        
+
         <div class="ui clearing divider"></div>
-        
+
         <div class="description">
           <p><strong>Notes:</strong> <%= game_session.notes%></p>
-          <p><strong>Game Date:</strong> <%= local_date(game_session.game_date, '%B %e') %></p>
+          <p><strong>Game Date:</strong> <%= game_session.game_date.strftime('%B %e') %></p>
           <p><strong>Start Time:</strong> <%= local_time(game_session.start_time, '%l:%M%P') %></p>
           <p><strong>End Time:</strong> <%= local_time(game_session.end_time, '%l:%M%P') %></p>
-          
+
           <div class="ui divider"></div>
-          
+
           <% if user_signed_in? && game_session.users.ids.include?(current_user.id) %>
             <% if game_session.creator != current_user %>
               <%= button_to 'Leave Session', leave_game_path(game_session), action: "leave_game", class: "game-button mini ui right floated primary button" %>

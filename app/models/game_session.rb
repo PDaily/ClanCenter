@@ -5,11 +5,9 @@ class GameSession < ActiveRecord::Base
   belongs_to :game_mode
 
   include Filterable
-  
+
   paginates_per 8
 
-  default_scope { where(active: true) }
-  
   scope :sorted_by, lambda { |sort_option|
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
     case sort_option.to_s
@@ -20,9 +18,10 @@ class GameSession < ActiveRecord::Base
     end
   }
 
-  
+
   scope :game_id, lambda { |game_ids| where(game_id: [*game_ids]) }
-  
+
+  scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
 
   validates :creator_id, :game_id, :game_mode_id, :game_date, :start_time, :end_time, :notes, presence: true
