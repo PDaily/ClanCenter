@@ -2,11 +2,11 @@
   <div class="ui segment">
     <div class="ui items">
       <div class="item">
-
+<%= console %>
         <div class="image">
           <%= image_tag @game_session.game.game_icon.url(:medium) %>
         </div>
-        
+
         <div class="content">
           <p class="header"><%= @game_session.game.title + " | " + @game_session.game_mode.title %></p>
 
@@ -28,7 +28,7 @@
             <% end %>
           	</div>
           </div>
-					
+
           <div class="description">
             <p><strong>Notes:</strong>
               <%= @game_session.notes %>
@@ -42,9 +42,9 @@
             <p><strong>End Time:</strong>
               <%= local_time(@game_session.end_time, '%l:%M%P') %>
             </p>
-            
+
           </div>
-          
+
           <div class="extra">
             <% if @game_session.active %>
               <% if user_signed_in? && @game_session.users.ids.include?(current_user.id) %>
@@ -67,5 +67,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>

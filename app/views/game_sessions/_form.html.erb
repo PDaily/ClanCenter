@@ -17,12 +17,12 @@
           </ul>
         </div>
       <% end %>
-  
+
         <div class="required field">
           <%= f.label :notes %>
           <%= f.text_area :notes, :required => true %>
         </div>
-        
+
         <div class="required field">
           <%= f.label :game_date %>
           <div class="field">
@@ -33,24 +33,24 @@
         <div class="required field">
           <%= f.label :start_time %>
           <div class="fields">
-            <%= f.time_select :start_time, {ampm: true, time_separator: "", default: @current_time}, class: "ui selection dropdown time-select" %>
+            <%= f.time_select :start_time, {ampm: true, time_separator: "", ignore_date: true, default: @current_time}, class: "ui selection dropdown time-select" %>
           </div>
         </div>
-  
+
         <div class="required field">
           <%= f.label :end_time %>
           <div class="fields">
-            <%= f.time_select :end_time, {ampm: true, time_separator: "", default: @current_time+1.hour}, class: "ui selection dropdown time-select"  %>
+            <%= f.time_select :end_time, {ampm: true, time_separator: "", ignore_date: true, default: @current_time+1.hour}, class: "ui selection dropdown time-select"  %>
           </div>
         </div>
 
 
         <div class="required field">
-          <%= f.label :game %>            
+          <%= f.label :game %>
           <%= f.select :game_id, options_for_select(@games.collect { |game|
                                                      [game.title.titleize, game.id] }, @current_game ), {}, {id: 'games_select', class: 'ui nine wide field selection dropdown'} %>
         </div>
-         
+
         <div class="required field">
           <%= f.label :game_mode_id, "Game Mode" %>
           <%= f.select :game_mode_id, options_for_select(@game_modes.collect { |game_mode|

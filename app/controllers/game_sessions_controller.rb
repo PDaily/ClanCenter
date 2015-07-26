@@ -49,8 +49,8 @@ class GameSessionsController < ApplicationController
         @game_session.users << current_user
         @game_session.game.increment!(:play_count, 1)
         @game_session.game_mode.increment!(:play_count, 1)
-
-        CleanupGameSessionsWorker.perform_in(@game_session.end_time + 1.hour, @game_session.id )
+        @end_time =  DateTime.new(@game_session.game_date.year, @game_session.game_date.month, @game_session.game_date.day, @game_session.end_time.hour, @game_session.end_time.min)
+        CleanupGameSessionsWorker.perform_in(@end_time + 1.hour, @game_session.id )
         GameSessionMailer.delay_for(1.minutes).new_game_session_email(@game_session, current_user)
       else
         format.html { render :new }
