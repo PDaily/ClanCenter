@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20150726192819) do
     t.integer  "game_mode_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.time     "start_time"
-    t.time     "end_time"
+    t.datetime     "start_time"
+    t.datetime     "end_time"
     t.date     "game_date"
     t.integer  "creator_id"
     t.boolean  "active"

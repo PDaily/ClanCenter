@@ -33,14 +33,14 @@
         <div class="required field">
           <%= f.label :start_time %>
           <div class="fields">
-            <%= f.time_select :start_time, {ampm: true, time_separator: "", ignore_date: true, default: @current_time}, class: "ui selection dropdown time-select" %>
+            <%= f.time_select :start_time, {ampm: true, time_separator: "", ignore_date: false, default: @current_time}, class: "ui selection dropdown time-select" %>
           </div>
         </div>
 
         <div class="required field">
           <%= f.label :end_time %>
           <div class="fields">
-            <%= f.time_select :end_time, {ampm: true, time_separator: "", ignore_date: true, default: @current_time+1.hour}, class: "ui selection dropdown time-select"  %>
+            <%= f.time_select :end_time, {ampm: true, time_separator: "", ignore_date: false, default: @current_time+1.hour}, class: "ui selection dropdown time-select"  %>
           </div>
         </div>
 
